@@ -15,7 +15,7 @@
 :root{
   --bg:#0d1220; --bg2:#141b2d; --card:#182036; --line:#263049;
   --text:#eef1f7; --muted:#9aa4bb; --accent:#ffb627; --accent-ink:#1a1200;
-  --wa:#25d366; --zalo:#0068ff; --radius:14px;
+  --wa:#25d366; --radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -105,7 +105,8 @@ body.locked .cta{display:none}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-main{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 24px rgba(255,182,39,.35)}
 .btn-wa{background:var(--wa);color:#05301a}
-.btn-zalo{background:var(--zalo);color:#fff}
+.hint{font-size:13px;color:var(--muted);margin-top:10px}
+.hint.ok{color:var(--wa)}
 .btn-ghost{background:#253050;color:var(--text)}
 .cta .btn-main{min-width:240px}
 @media(max-width:420px){.cta .btn-main{min-width:0;flex:1}}
@@ -190,7 +191,7 @@ body.locked .cta{display:none}
       <div><b>🏢 Walk-in office</b><p>Visit us at 04 Thu Khoa Huan, opposite the Ben Thanh area. Pay and ask questions in person.</p></div>
       <div><b>🗣️ English-speaking guides</b><p>Every tour comes with a guide who explains the history and culture along the way.</p></div>
       <div><b>🚐 Pick-up at your hotel</b><p>Air-conditioned van, limousine or bus picks you up from hotels in District 1.</p></div>
-      <div><b>💬 Fast replies</b><p>Message us on WhatsApp or Zalo and get a confirmation quickly.</p></div>
+      <div><b>💬 Fast replies</b><p>Message us on WhatsApp and get a confirmation quickly.</p></div>
     </div>
   </section>
 
@@ -201,10 +202,11 @@ body.locked .cta{display:none}
       <img src="img/office.jpg" alt="Vietnam Memory Travel office front at 04 Thu Khoa Huan, District 1" loading="lazy">
       <div class="info">
         <div class="row"><span>Address</span>04 Thu Khoa Huan Street, Ben Thanh Ward, District 1, Ho Chi Minh City</div>
-        <div class="row"><span>Hotline / WhatsApp / Zalo</span><a href="tel:+84789755448">+84 789 755 448</a></div>
+        <div class="row"><span>Hotline</span><a href="tel:+84789755448">+84 789 755 448</a></div>
         <div class="row"><span>Email</span><a href="mailto:vnmemorytravel@gmail.com">vnmemorytravel@gmail.com</a></div>
         <iframe src="https://maps.google.com/maps?q=10.7734564,106.6977833&z=17&output=embed" loading="lazy" title="Map to Vietnam Memory Travel" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="qrs">
+          <a href="https://wa.me/qr/7QZWN7CRAH2TK1" target="_blank" rel="noopener"><img src="assets/qr-whatsapp.png" alt="QR code for WhatsApp">Chat with us on<br>WhatsApp</a>
           <a href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener"><img src="assets/qr-a.png" alt="QR code for Google Maps">Open in<br>Google Maps</a>
           <a href="https://www.tripadvisor.com.vn/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener"><img src="assets/qr-b.png" alt="QR code for Tripadvisor">Read reviews on<br>Tripadvisor</a>
         </div>
@@ -230,8 +232,8 @@ body.locked .cta{display:none}
 </div>
 
 <script>
-const PHONE = "84789755448";           // WhatsApp / Zalo / call
-const ZALO = "https://zalo.me/0789755448";
+const PHONE = "84789755448";           // hotline (call)
+const WA_LINK = "https://wa.me/qr/7QZWN7CRAH2TK1";  // WhatsApp contact QR link
 const fmt = n => n.toLocaleString("en-US") + " VND";
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
@@ -407,8 +409,7 @@ document.getElementById("ptable").innerHTML = TOURS.map(t=>`
 document.getElementById("ptable").addEventListener("click",e=>{const b=e.target.closest("button");if(b)openTour(b.dataset.id);});
 
 /* whatsapp */
-const wa = msg => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
-document.getElementById("ctaMain").href = wa("Hello Vietnam Memory Travel! I'd like to book a tour.");
+document.getElementById("ctaMain").href = WA_LINK;
 
 /* modal */
 const modal = document.getElementById("modal");
@@ -449,11 +450,12 @@ function openTour(id){
       </div>
       <div class="est">Estimated total: <b id="bTot"></b></div>
       <div class="bbtns">
-        <a class="btn btn-wa" id="bWa" target="_blank" rel="noopener">Book via WhatsApp</a>
-        <a class="btn btn-zalo" href="${ZALO}" target="_blank" rel="noopener">Chat on Zalo</a>
+        <a class="btn btn-wa" id="bWa" href="${WA_LINK}" target="_blank" rel="noopener">Book via WhatsApp</a>
         <a class="btn btn-ghost" href="tel:+${PHONE}">☎ Call</a>
       </div>
+      <p class="hint" id="bHint">Tap “Book via WhatsApp”: your booking details are copied automatically, just paste them in the chat.</p>
     </div>`;
+  document.getElementById("bWa").addEventListener("click", copyBooking);
   const d = new Date(); d.setDate(d.getDate()+1);
   document.getElementById("bDate").value = d.toISOString().slice(0,10);
   document.getElementById("bDate").min = new Date().toISOString().slice(0,10);
@@ -475,7 +477,18 @@ function updateBook(){
     `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"",
     `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
     v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
-  document.getElementById("bWa").href = wa(msg);
+  bookingMsg = msg;
+}
+let bookingMsg = "";
+function copyBooking(){
+  const hint = document.getElementById("bHint");
+  const done = () => { hint.textContent = "✓ Booking details copied. Paste them in the WhatsApp chat and send."; hint.classList.add("ok"); };
+  try {
+    if (navigator.clipboard) { navigator.clipboard.writeText(bookingMsg).then(done, ()=>{}); return; }
+  } catch (e) {}
+  const ta = document.createElement("textarea"); ta.value = bookingMsg; document.body.appendChild(ta); ta.select();
+  try { if (document.execCommand("copy")) done(); } catch (e) {}
+  ta.remove();
 }
 function closeTour(){
   modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
