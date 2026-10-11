@@ -105,6 +105,18 @@ body.locked .cta{display:none}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-main{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 24px rgba(255,182,39,.35)}
 .btn-wa{background:var(--wa);color:#05301a}
+.rev{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rcard{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.rcard>img{width:120px;height:120px;flex:none;background:#fff;border-radius:10px;padding:6px}
+.rtag{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.6px}
+.rcard h3{font-size:18px;margin:4px 0 6px}
+.rcard p{color:var(--muted);font-size:14px}
+.rbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.rbtns .btn{padding:10px 16px;font-size:14px;box-shadow:none}
+@media(max-width:820px){.rev{grid-template-columns:1fr}}
+@media(max-width:460px){.rcard{flex-direction:column}.rcard>img{width:140px;height:140px}}
+.revline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+.revline a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
 .hint.ok{color:var(--wa)}
 .btn-ghost{background:#253050;color:var(--text)}
@@ -159,7 +171,7 @@ body.locked .cta{display:none}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#">Vietnam Memory <span>Travel</span></a>
-    <nav class="nav-links"><a href="#tours">Tours</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
+    <nav class="nav-links"><a href="#tours">Tours</a><a href="#reviews">Reviews</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
     <a class="nav-call" href="tel:+84789755448">☎ +84 789 755 448</a>
   </div>
 </header>
@@ -169,7 +181,7 @@ body.locked .cta{display:none}
     <h1>Day tours from <em>Saigon</em>,<br>booked in one message</h1>
     <p>Cu Chi Tunnels, Mekong Delta, beaches, mountains and a night cruise. English-speaking guides and hotel pick-up in District 1. Pick a tour below to see the program and price.</p>
     <div class="trust">
-      <a class="chip" href="https://www.tripadvisor.com.vn/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener"><b>★</b> Reviewed on Tripadvisor</a>
+      <a class="chip" href="#reviews"><b>★</b> See our reviews on Tripadvisor &amp; Google</a>
       <a class="chip" href="#office">📍 Real office: 04 Thu Khoa Huan, District 1</a>
       <span class="chip">🚐 Hotel pick-up in District 1</span>
     </div>
@@ -177,6 +189,36 @@ body.locked .cta{display:none}
 
   <div id="tours" class="filters" role="tablist"></div>
   <div class="grid" id="grid"></div>
+
+  <section id="reviews">
+    <h2>Don’t just take our word for it</h2>
+    <p class="lead">See what other travelers say about their tours with us before you book. Scan a code with your phone camera or tap the button.</p>
+    <div class="rev">
+      <div class="rcard">
+        <img src="assets/qr-b.png" alt="QR code for our Tripadvisor page">
+        <div>
+          <span class="rtag">★ Tripadvisor</span>
+          <h3>Read our traveler reviews</h3>
+          <p>Honest reviews from guests who joined our tours. Traveled with us already? We’d be truly grateful if you shared your experience.</p>
+          <div class="rbtns">
+            <a class="btn btn-main" href="https://www.tripadvisor.com/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener">Read reviews</a>
+            <a class="btn btn-ghost" href="https://www.tripadvisor.com/UserReviewEdit-g293925-d10064393-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener">Write a review</a>
+          </div>
+        </div>
+      </div>
+      <div class="rcard">
+        <img src="assets/qr-a.png" alt="QR code for our Google Maps location">
+        <div>
+          <span class="rtag">📍 Google Maps</span>
+          <h3>Find us &amp; see our Google reviews</h3>
+          <p>Our office is at 04 Thu Khoa Huan, District 1, a short walk from Ben Thanh Market. Enjoyed your tour? Leave us a review on Google.</p>
+          <div class="rbtns">
+            <a class="btn btn-main" href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener">Open Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="prices">
     <h2>Price list</h2>
@@ -207,8 +249,7 @@ body.locked .cta{display:none}
         <iframe src="https://maps.google.com/maps?q=10.7734564,106.6977833&z=17&output=embed" loading="lazy" title="Map to Vietnam Memory Travel" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="qrs">
           <a href="https://wa.me/qr/7QZWN7CRAH2TK1" target="_blank" rel="noopener"><img src="assets/qr-whatsapp.png" alt="QR code for WhatsApp">Chat with us on<br>WhatsApp</a>
-          <a href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener"><img src="assets/qr-a.png" alt="QR code for Google Maps">Open in<br>Google Maps</a>
-          <a href="https://www.tripadvisor.com.vn/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener"><img src="assets/qr-b.png" alt="QR code for Tripadvisor">Read reviews on<br>Tripadvisor</a>
+          <a href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener"><img src="assets/qr-a.png" alt="QR code for Google Maps">Find us on<br>Google Maps</a>
         </div>
       </div>
     </div>
@@ -438,6 +479,7 @@ function openTour(id){
     </div>
     ${t.kids?`<h4>Children policy</h4>${li(t.kids,"dot")}`:""}
     ${t.notes.length?`<h4>Good to know</h4>${li(t.notes,"dot")}`:""}
+    <div class="revline"><span>★ Not sure yet? See what other travelers say about us.</span><a href="https://www.tripadvisor.com/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener">Read reviews →</a></div>
     <div class="book">
       <h3>Book this tour</h3>
       <div class="fields">
