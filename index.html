@@ -117,6 +117,21 @@ body.locked .cta{display:none}
 @media(max-width:460px){.rcard{flex-direction:column}.rcard>img{width:140px;height:140px}}
 .revline{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
 .revline a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
+.cbox{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+.cbox.open{display:flex}
+.cpanel{position:relative;background:var(--bg2);border:1px solid var(--line);border-radius:18px;width:100%;max-width:400px;padding:24px 20px 20px;text-align:center;margin:auto}
+.cpanel h3{font-size:21px;margin-bottom:4px}
+.cpanel .sub{color:var(--muted);font-size:14px}
+.cpanel .x{background:#253050}
+.cqr{width:200px;height:200px;margin:16px auto 6px;background:#fff;border-radius:14px;padding:8px}
+.cnum{display:block;font-size:28px;font-weight:800;letter-spacing:.5px;color:var(--accent);text-decoration:none;margin:12px 0 4px}
+.cbtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.cbtns .btn{padding:12px 10px;font-size:14px;box-shadow:none}
+.cbk{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:16px;font-size:13px}
+.cbk pre{white-space:pre-wrap;font-family:inherit;color:var(--muted);margin:6px 0 10px}
+.cbk button{width:100%}
+.cnote{font-size:12px;color:var(--muted);margin-top:12px}
+.copied{color:var(--wa)!important}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
 .hint.ok{color:var(--wa)}
 .btn-ghost{background:#253050;color:var(--text)}
@@ -172,7 +187,7 @@ body.locked .cta{display:none}
   <div class="wrap nav">
     <a class="brand" href="#">Vietnam Memory <span>Travel</span></a>
     <nav class="nav-links"><a href="#tours">Tours</a><a href="#reviews">Reviews</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
-    <a class="nav-call" href="tel:+84789755448">☎ +84 789 755 448</a>
+    <a class="nav-call" href="tel:+84789755448" data-contact="call">☎ +84 789 755 448</a>
   </div>
 </header>
 
@@ -244,11 +259,11 @@ body.locked .cta{display:none}
       <img src="img/office.jpg" alt="Vietnam Memory Travel office front at 04 Thu Khoa Huan, District 1" loading="lazy">
       <div class="info">
         <div class="row"><span>Address</span>04 Thu Khoa Huan Street, Ben Thanh Ward, District 1, Ho Chi Minh City</div>
-        <div class="row"><span>Hotline</span><a href="tel:+84789755448">+84 789 755 448</a></div>
+        <div class="row"><span>Hotline / WhatsApp</span><a href="tel:+84789755448" data-contact="call">+84 789 755 448</a></div>
         <div class="row"><span>Email</span><a href="mailto:vnmemorytravel@gmail.com">vnmemorytravel@gmail.com</a></div>
         <iframe src="https://maps.google.com/maps?q=10.7734564,106.6977833&z=17&output=embed" loading="lazy" title="Map to Vietnam Memory Travel" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="qrs">
-          <a href="https://wa.me/qr/7QZWN7CRAH2TK1" target="_blank" rel="noopener"><img src="assets/qr-whatsapp.png" alt="QR code for WhatsApp">Chat with us on<br>WhatsApp</a>
+          <a href="https://wa.me/84789755448" data-contact="wa"><img src="assets/qr-whatsapp.png" alt="QR code for WhatsApp">Chat with us on<br>WhatsApp</a>
           <a href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener"><img src="assets/qr-a.png" alt="QR code for Google Maps">Find us on<br>Google Maps</a>
         </div>
       </div>
@@ -259,8 +274,15 @@ body.locked .cta{display:none}
 <footer>© Vietnam Memory Travel Co., Ltd · tourbooking.com.vn<br>Tour order may change depending on the actual situation, but all listed attractions are covered.</footer>
 
 <div class="cta">
-  <a class="btn btn-main" id="ctaMain" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Book via WhatsApp</a>
-  <a class="btn btn-ghost" href="tel:+84789755448" aria-label="Call us">☎<span class="hide-s"> Call</span></a>
+  <a class="btn btn-main" id="ctaMain" href="https://wa.me/84789755448" data-contact="wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Book via WhatsApp</a>
+  <a class="btn btn-ghost" href="tel:+84789755448" data-contact="call" aria-label="Call us">☎<span class="hide-s"> Call</span></a>
+</div>
+
+<div class="cbox" id="cbox" aria-hidden="true">
+  <div class="cpanel" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+    <button class="x" id="cClose" aria-label="Close">×</button>
+    <div id="cBody"></div>
+  </div>
 </div>
 
 <div class="modal" id="modal" aria-hidden="true">
@@ -274,7 +296,7 @@ body.locked .cta{display:none}
 
 <script>
 const PHONE = "84789755448";           // hotline (call)
-const WA_LINK = "https://wa.me/qr/7QZWN7CRAH2TK1";  // WhatsApp contact QR link
+const PHONE_TXT = "+84 789 755 448";
 const fmt = n => n.toLocaleString("en-US") + " VND";
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
@@ -450,7 +472,6 @@ document.getElementById("ptable").innerHTML = TOURS.map(t=>`
 document.getElementById("ptable").addEventListener("click",e=>{const b=e.target.closest("button");if(b)openTour(b.dataset.id);});
 
 /* whatsapp */
-document.getElementById("ctaMain").href = WA_LINK;
 
 /* modal */
 const modal = document.getElementById("modal");
@@ -492,12 +513,10 @@ function openTour(id){
       </div>
       <div class="est">Estimated total: <b id="bTot"></b></div>
       <div class="bbtns">
-        <a class="btn btn-wa" id="bWa" href="${WA_LINK}" target="_blank" rel="noopener">Book via WhatsApp</a>
-        <a class="btn btn-ghost" href="tel:+${PHONE}">☎ Call</a>
+        <a class="btn btn-wa" id="bWa" href="https://wa.me/${PHONE}" data-contact="wa">Book via WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+${PHONE}" data-contact="call">☎ Call</a>
       </div>
-      <p class="hint" id="bHint">Tap “Book via WhatsApp”: your booking details are copied automatically, just paste them in the chat.</p>
     </div>`;
-  document.getElementById("bWa").addEventListener("click", copyBooking);
   const d = new Date(); d.setDate(d.getDate()+1);
   document.getElementById("bDate").value = d.toISOString().slice(0,10);
   document.getElementById("bDate").min = new Date().toISOString().slice(0,10);
@@ -522,23 +541,68 @@ function updateBook(){
   bookingMsg = msg;
 }
 let bookingMsg = "";
-function copyBooking(){
-  const hint = document.getElementById("bHint");
-  const done = () => { hint.textContent = "✓ Booking details copied. Paste them in the WhatsApp chat and send."; hint.classList.add("ok"); };
-  try {
-    if (navigator.clipboard) { navigator.clipboard.writeText(bookingMsg).then(done, ()=>{}); return; }
-  } catch (e) {}
-  const ta = document.createElement("textarea"); ta.value = bookingMsg; document.body.appendChild(ta); ta.select();
+
+/* contact dialog: WhatsApp QR + number, or hotline */
+const cbox = document.getElementById("cbox"), cBody = document.getElementById("cBody");
+function copyText(text, btn, label){
+  const done = () => { btn.textContent = "✓ Copied"; btn.classList.add("copied"); setTimeout(()=>{ btn.textContent = label; btn.classList.remove("copied"); }, 2000); };
+  try { if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done, ()=>{}); return; } } catch (e) {}
+  const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
   try { if (document.execCommand("copy")) done(); } catch (e) {}
   ta.remove();
 }
+function openContact(mode){
+  const inTour = modal.classList.contains("open") && bookingMsg;
+  const msg = inTour ? bookingMsg : "Hello Vietnam Memory Travel! I'd like to book a tour.";
+  if (mode === "wa") {
+    cBody.innerHTML = `
+      <h3 id="cTitle">Book via WhatsApp</h3>
+      <p class="sub">Scan with your phone camera, or message this number on WhatsApp</p>
+      <img class="cqr" src="assets/qr-whatsapp.png" alt="WhatsApp QR code of Vietnam Memory Travel">
+      <a class="cnum" href="https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">${PHONE_TXT}</a>
+      <div class="cbtns">
+        <a class="btn btn-wa" href="https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Open WhatsApp</a>
+        <button class="btn btn-ghost" data-copy="num">Copy number</button>
+      </div>
+      ${inTour ? `<div class="cbk"><b>Your booking details</b><pre>${msg.replace(/</g,"&lt;")}</pre><button class="btn btn-ghost" data-copy="msg">Copy booking details</button></div>` : ""}`;
+  } else {
+    cBody.innerHTML = `
+      <h3 id="cTitle">Call us</h3>
+      <p class="sub">Hotline · Vietnam Memory Travel</p>
+      <a class="cnum" href="tel:+${PHONE}">${PHONE_TXT}</a>
+      <div class="cbtns">
+        <a class="btn btn-main" href="tel:+${PHONE}">☎ Call now</a>
+        <button class="btn btn-ghost" data-copy="num">Copy number</button>
+      </div>
+      <p class="cnote">The same number is on WhatsApp.</p>`;
+  }
+  cBody.querySelectorAll("[data-copy]").forEach(b => {
+    const label = b.textContent;
+    b.onclick = () => copyText(b.dataset.copy === "num" ? PHONE_TXT : msg, b, label);
+  });
+  cbox.classList.add("open"); cbox.setAttribute("aria-hidden","false");
+  document.body.classList.add("locked");
+}
+function closeContact(){
+  cbox.classList.remove("open"); cbox.setAttribute("aria-hidden","true");
+  if (!modal.classList.contains("open")) document.body.classList.remove("locked");
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest("[data-contact]");
+  if (!a) return;
+  e.preventDefault(); openContact(a.dataset.contact);
+});
+document.getElementById("cClose").onclick = closeContact;
+cbox.addEventListener("click", e => { if (e.target === cbox) closeContact(); });
 function closeTour(){
   modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
   document.body.classList.remove("locked"); history.replaceState(null,"",location.pathname);
 }
 document.getElementById("mClose").onclick = closeTour;
 modal.addEventListener("click",e=>{ if(e.target===modal) closeTour(); });
-document.addEventListener("keydown",e=>{ if(!modal.classList.contains("open"))return;
+document.addEventListener("keydown",e=>{
+  if(cbox.classList.contains("open")){ if(e.key==="Escape") closeContact(); return; }
+  if(!modal.classList.contains("open"))return;
   if(e.key==="Escape")closeTour(); if(e.key==="ArrowRight")showImg(gi+1); if(e.key==="ArrowLeft")showImg(gi-1); });
 document.getElementById("gPrev").onclick = ()=>showImg(gi-1);
 document.getElementById("gNext").onclick = ()=>showImg(gi+1);
