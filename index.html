@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tour Booking Saigon | Vietnam Memory Travel</title>
+<meta name="description" content="Daily tours from Ho Chi Minh City: Cu Chi Tunnels, Mekong Delta, Vung Tau, Mui Ne, Tay Ninh, Monkey Island, Saigon city tour and dinner cruise. Hotel pick-up in District 1. Book via WhatsApp.">
+<meta property="og:title" content="Tour Booking Saigon – Vietnam Memory Travel">
+<meta property="og:description" content="Daily tours from Ho Chi Minh City with English-speaking guides. Hotel pick-up in District 1.">
+<meta property="og:image" content="img/cuchimekong-1.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1220; --bg2:#141b2d; --card:#182036; --line:#263049;
+  --text:#eef1f7; --muted:#9aa4bb; --accent:#ffb627; --accent-ink:#1a1200;
+  --wa:#25d366; --zalo:#0068ff; --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body.locked{overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:"Be Vietnam Pro",system-ui,sans-serif;line-height:1.55;padding-bottom:84px}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(13,18,32,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.brand{font-weight:800;font-size:17px;letter-spacing:.3px;text-decoration:none}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:20px;font-size:14px;color:var(--muted)}
+.nav-links a{text-decoration:none}.nav-links a:hover{color:var(--text)}
+.nav-call{font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);padding:7px 12px;border-radius:999px;white-space:nowrap}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* hero */
+.hero{padding:44px 0 26px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;font-weight:800;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);margin-top:12px;max-width:640px;font-size:16px}
+.trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;text-decoration:none}
+.chip b{color:var(--accent)}
+
+/* filter */
+.filters{display:flex;gap:8px;overflow-x:auto;padding:6px 0 18px;scrollbar-width:none}
+.filters button{flex:none;background:var(--bg2);border:1px solid var(--line);color:var(--muted);font:inherit;font-size:14px;padding:8px 16px;border-radius:999px;cursor:pointer}
+.filters button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;cursor:pointer;border:1px solid var(--line);transition:transform .2s,border-color .2s;display:flex;flex-direction:column;text-align:left;color:inherit;font:inherit}
+.card:hover{transform:translateY(-3px);border-color:#3a4766}
+.card .ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:#222b42}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .ph img{transform:scale(1.05)}
+.badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:17px;font-weight:700;line-height:1.3}
+.card .sub{color:var(--muted);font-size:13px}
+.card .foot{display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto;padding-top:10px}
+.price small{display:block;color:var(--muted);font-size:12px}
+.price b{font-size:19px;color:var(--accent)}
+.more{font-size:13px;font-weight:600;color:var(--text);background:#253050;padding:7px 12px;border-radius:999px}
+
+/* sections */
+section{padding:40px 0 10px}
+h2{font-size:clamp(22px,3vw,30px);font-weight:800;margin-bottom:6px}
+.lead{color:var(--muted);margin-bottom:20px}
+
+/* price table */
+.ptable{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.prow{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:14px 18px;border-top:1px solid var(--line)}
+.prow:first-child{border-top:0}
+.prow .n{font-weight:600}.prow .n small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+.prow .v{color:var(--accent);font-weight:700;white-space:nowrap}
+.prow button{background:transparent;border:1px solid var(--line);color:var(--text);font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;cursor:pointer}
+@media(max-width:520px){.prow{grid-template-columns:1fr auto}.prow button{display:none}}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.why div{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.why b{display:block;margin-bottom:4px}
+.why p{color:var(--muted);font-size:14px}
+
+/* office */
+.office{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:18px}
+.office img{border-radius:var(--radius);width:100%;height:100%;object-fit:cover;max-height:460px}
+.office .info{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:flex;flex-direction:column;gap:12px}
+.office iframe{width:100%;flex:1;min-height:220px;border:0;border-radius:10px}
+.office .row{font-size:15px}.office .row span{color:var(--muted);display:block;font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+.qrs{display:flex;gap:12px;flex-wrap:wrap}
+.qrs a{display:flex;gap:10px;align-items:center;background:#fff;color:#111;text-decoration:none;border-radius:10px;padding:8px 12px 8px 8px;font-size:13px;font-weight:600}
+.qrs img{width:64px;height:64px}
+@media(max-width:760px){.office{grid-template-columns:1fr}.office img{max-height:340px}}
+
+footer{color:var(--muted);font-size:13px;text-align:center;padding:36px 16px 20px}
+
+/* sticky CTA */
+body.locked .cta{display:none}
+.cta{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(13,18,32,.95) 35%);display:flex;justify-content:center;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;font:inherit;font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-main{background:var(--accent);color:var(--accent-ink);box-shadow:0 6px 24px rgba(255,182,39,.35)}
+.btn-wa{background:var(--wa);color:#05301a}
+.btn-zalo{background:var(--zalo);color:#fff}
+.btn-ghost{background:#253050;color:var(--text)}
+.cta .btn-main{min-width:240px}
+@media(max-width:420px){.cta .btn-main{min-width:0;flex:1}}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.7);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:24px 12px}
+.modal.open{display:flex}
+.sheet{background:var(--bg2);border:1px solid var(--line);border-radius:18px;max-width:860px;width:100%;overflow:hidden;position:relative}
+.x{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:22px;cursor:pointer;line-height:1}
+.gal{position:relative;aspect-ratio:16/9;background:#000}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal .nav-b{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:20px;cursor:pointer}
+.gal .prev{left:10px}.gal .next{right:10px}
+.thumbs{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#0b0f1b}
+.thumbs img{width:76px;height:52px;object-fit:cover;border-radius:6px;opacity:.5;cursor:pointer;flex:none}
+.thumbs img.on{opacity:1;outline:2px solid var(--accent)}
+.mbody{padding:20px}
+.mbody h2{font-size:24px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px}
+.meta span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--muted)}
+.mbody h4{font-size:13px;text-transform:uppercase;letter-spacing:.8px;color:var(--accent);margin:20px 0 10px}
+.steps{list-style:none;border-left:2px solid var(--line);margin-left:6px}
+.steps li{position:relative;padding:0 0 14px 18px}
+.steps li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.steps b{display:block}
+.steps p{color:var(--muted);font-size:14px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.opt b{color:var(--accent);white-space:nowrap}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+.list{list-style:none;display:grid;gap:6px;font-size:14px}
+.list li{padding-left:22px;position:relative}
+.list.yes li::before{content:"✓";position:absolute;left:0;color:var(--wa);font-weight:700}
+.list.no li::before{content:"✕";position:absolute;left:0;color:#ff6b6b;font-weight:700}
+.list.dot li::before{content:"•";position:absolute;left:6px;color:var(--accent)}
+.book{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:22px}
+.book h3{font-size:18px;margin-bottom:12px}
+.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.fields label{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.fields .full{grid-column:1/-1}
+.fields input,.fields select{background:var(--bg);border:1px solid var(--line);color:var(--text);font:inherit;font-size:15px;padding:10px 12px;border-radius:10px;width:100%}
+.est{margin:12px 0;font-size:14px;color:var(--muted)}.est b{color:var(--accent);font-size:18px}
+.bbtns{display:flex;gap:8px;flex-wrap:wrap}
+.bbtns .btn{flex:1;min-width:150px;padding:12px 14px;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Vietnam Memory <span>Travel</span></a>
+    <nav class="nav-links"><a href="#tours">Tours</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
+    <a class="nav-call" href="tel:+84789755448">☎ +84 789 755 448</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Day tours from <em>Saigon</em>,<br>booked in one message</h1>
+    <p>Cu Chi Tunnels, Mekong Delta, beaches, mountains and a night cruise. English-speaking guides and hotel pick-up in District 1. Pick a tour below to see the program and price.</p>
+    <div class="trust">
+      <a class="chip" href="https://www.tripadvisor.com.vn/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener"><b>★</b> Reviewed on Tripadvisor</a>
+      <a class="chip" href="#office">📍 Real office: 04 Thu Khoa Huan, District 1</a>
+      <span class="chip">🚐 Hotel pick-up in District 1</span>
+    </div>
+  </div>
+
+  <div id="tours" class="filters" role="tablist"></div>
+  <div class="grid" id="grid"></div>
+
+  <section id="prices">
+    <h2>Price list</h2>
+    <p class="lead">Price per person in Vietnamese Dong (VND). Children under 3 travel free.</p>
+    <div class="ptable" id="ptable"></div>
+  </section>
+
+  <section id="why">
+    <h2>Why book with us</h2>
+    <p class="lead">A local travel company with a walk-in office in the heart of Saigon.</p>
+    <div class="why">
+      <div><b>🏢 Walk-in office</b><p>Visit us at 04 Thu Khoa Huan, opposite the Ben Thanh area. Pay and ask questions in person.</p></div>
+      <div><b>🗣️ English-speaking guides</b><p>Every tour comes with a guide who explains the history and culture along the way.</p></div>
+      <div><b>🚐 Pick-up at your hotel</b><p>Air-conditioned van, limousine or bus picks you up from hotels in District 1.</p></div>
+      <div><b>💬 Fast replies</b><p>Message us on WhatsApp or Zalo and get a confirmation quickly.</p></div>
+    </div>
+  </section>
+
+  <section id="office">
+    <h2>Visit our office</h2>
+    <p class="lead">Vietnam Memory Travel Co., Ltd · Tourist Information Center</p>
+    <div class="office">
+      <img src="img/office.jpg" alt="Vietnam Memory Travel office front at 04 Thu Khoa Huan, District 1" loading="lazy">
+      <div class="info">
+        <div class="row"><span>Address</span>04 Thu Khoa Huan Street, Ben Thanh Ward, District 1, Ho Chi Minh City</div>
+        <div class="row"><span>Hotline / WhatsApp / Zalo</span><a href="tel:+84789755448">+84 789 755 448</a></div>
+        <div class="row"><span>Email</span><a href="mailto:vnmemorytravel@gmail.com">vnmemorytravel@gmail.com</a></div>
+        <iframe src="https://maps.google.com/maps?q=10.7734564,106.6977833&z=17&output=embed" loading="lazy" title="Map to Vietnam Memory Travel" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="qrs">
+          <a href="https://www.google.com/maps/place/VIETNAM+MEMORY+TRAVEL/@10.7734564,106.6977833,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f38d1fdba0d:0x14e510bdb3062a4d!8m2!3d10.7734564!4d106.6977833!16s%2Fg%2F11bx9yk50y" target="_blank" rel="noopener"><img src="assets/qr-a.png" alt="QR code for Google Maps">Open in<br>Google Maps</a>
+          <a href="https://www.tripadvisor.com.vn/Attraction_Review-g293925-d10064393-Reviews-Vietnam_Memory_Travel-Ho_Chi_Minh_City.html" target="_blank" rel="noopener"><img src="assets/qr-b.png" alt="QR code for Tripadvisor">Read reviews on<br>Tripadvisor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© Vietnam Memory Travel Co., Ltd · tourbooking.com.vn<br>Tour order may change depending on the actual situation, but all listed attractions are covered.</footer>
+
+<div class="cta">
+  <a class="btn btn-main" id="ctaMain" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>Book via WhatsApp</a>
+  <a class="btn btn-ghost" href="tel:+84789755448" aria-label="Call us">☎<span class="hide-s"> Call</span></a>
+</div>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="x" id="mClose" aria-label="Close">×</button>
+    <div class="gal"><img id="gImg" alt=""><button class="nav-b prev" id="gPrev" aria-label="Previous photo">‹</button><button class="nav-b next" id="gNext" aria-label="Next photo">›</button></div>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+const PHONE = "84789755448";           // WhatsApp / Zalo / call
+const ZALO = "https://zalo.me/0789755448";
+const fmt = n => n.toLocaleString("en-US") + " VND";
+
+const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
+const KIDS_B = ["Under 3 years old: free", "9 years old and under: 75% of adult price", "10 years and above: adult price"];
+const KIDS_C = ["1 – 3 years old: free", "4 – 9 years old: 75% of adult price", "10 years and above: adult price"];
+const NOTE_STD = ["Tour order may change depending on the actual situation, but all attractions are covered.", "Tell us about food allergies in advance so we can arrange suitable dishes.", "If anything comes up during the tour, call us right away."];
+
+const TOURS = [
+{ id:"cuchimekong", cat:"history", name:"Cu Chi Tunnels & Mekong Delta", tag:"Best seller", time:"7:30 AM – 7:30 PM", dur:"Full day", imgs:7,
+  sub:"History and river life in one day",
+  steps:[
+   ["Cu Chi Tunnels","Watch the documentary video, crawl into the tunnels and visit the underground bunkers: meeting rooms, hospitals and ammunition stores."],
+   ["War relics","See the guns, traps and a huge bomb crater. Shooting range available at your own expense."],
+   ["Hoang Cam kitchen","Learn how the guerrillas hid their cooking smoke and taste tapioca, the food they ate during the war."],
+   ["Mekong River cruise","Drive to My Tho and board a traditional boat past the Turtle, Dragon and Phoenix islets to Unicorn Islet."],
+   ["Lunch & bee farm","Lunch at a local restaurant. Visit a bee farm for honey tea and take a photo with a python."],
+   ["Fruit & folk music","Tropical fruit with live “Đờn Ca Tài Tử” southern folk music."],
+   ["Tan Thach Canal","Ride a hand-rowed sampan through the coconut-lined canal."],
+   ["Ben Tre – Coconut Kingdom","See how coconut candy is made and try making it yourself."]],
+  options:[["Luxury group, max 12 people · Minivan",1300000],["Medium group, 17 people · Limousine",1200000],["Large group, max 25 people · Minibus",1100000]],
+  inc:["Hotel pick-up and drop-off (District 1)","Lunch","All entrance fees","English-speaking guide","1 bottle of water (0.5 L) per person"],
+  exc:["Personal expenses","Shooting range","VAT"], kids:KIDS_B, notes:NOTE_STD },
+
+{ id:"cuchi", cat:"history", name:"Cu Chi Tunnels Half Day", tag:"Half day", time:"Morning 7:30 AM · Afternoon 12:30 PM", dur:"Half day", imgs:6,
+  sub:"Morning or afternoon departure",
+  steps:[
+   ["Pick-up","From hotels in District 1, or meet at our office if you stay in another district. About 1.5 hours drive to Cu Chi."],
+   ["Documentary","Watch a film about the history and construction of the tunnel system built during the Vietnam War."],
+   ["Into the tunnels","Crawl through narrow passages and see living quarters, kitchens, field hospitals, hidden trapdoors and booby traps."],
+   ["Wartime snack","Enjoy cassava and tea, the traditional snack of Vietnamese guerrillas."],
+   ["Shooting range (optional)","Try rifles such as the AK-47 and M16, extra fee."]],
+  options:[["Small group, max 12 people · Minivan",700000],["Medium group, 17 people · Limousine",650000],["Large group, max 25 people · Minibus",500000]],
+  inc:["Air-conditioned car, pick-up and drop-off in District 1","English-speaking guide","All entrance fees","Bottle of water per person"],
+  exc:["Personal expenses","Bullets at the shooting range","VAT"], kids:KIDS_B, notes:[] },
+
+{ id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Popular", time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
+  sub:"My Tho · Ben Tre · 4 islands",
+  steps:[
+   ["Vinh Trang Pagoda","A unique blend of Vietnamese, Chinese and European architecture with intricate carvings and impressive statues."],
+   ["Mekong River","Board a traditional boat and pass the Turtle, Dragon and Phoenix islets to Unicorn Islet."],
+   ["Bee farm","Drink honey tea and enjoy tropical fruit with southern Vietnamese folk music performed by locals."],
+   ["Lunch","A generous lunch with local dishes."],
+   ["Tan Thach Canal","Ride a hand-rowed sampan under the water coconut palms."],
+   ["Ben Tre – Coconut Kingdom","Orchards, coconut plantations and a coconut candy workshop where you can try it yourself."]],
+  options:[["Medium group, 17 people · Limousine",850000],["Large group, max 25 people · Minibus",650000]],
+  inc:["Hotel pick-up and drop-off (District 1)","English-speaking guide","All entrance fees","Bottle of water (500 ml)","Lunch"],
+  exc:["Personal expenses","VAT"], kids:KIDS_B, notes:NOTE_STD },
+
+{ id:"cycling", cat:"nature", name:"Mekong Cycling & Cooking Class", tag:"Small group", time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:6,
+  sub:"Bike the villages, cook Vietnamese food",
+  steps:[
+   ["Ben Luc, Mekong Delta","Pick-up at your hotel and drive to the countryside."],
+   ["Dragon fruit garden","Visit a red-flesh dragon fruit garden (depending on the season)."],
+   ["Cycling","Explore the village roads by bicycle and walk through the rice paddy fields."],
+   ["Cooking class","Learn to cook Bánh Xèo (Vietnamese pancake) and Chả Giò (spring rolls)."],
+   ["Mekong River","Cruise the river, visit a coconut candy workshop and a bee farm with honey tea."],
+   ["Vinh Trang Pagoda","Famous for its mix of Vietnamese, Chinese and European architecture."]],
+  options:[["Luxury group, max 12 people · Minivan",900000]],
+  inc:["Hotel pick-up and drop-off (District 1)","English-speaking guide","All entrance fees","Bottle of water (500 ml)","Cycling and cooking class","Lunch"],
+  exc:["Personal expenses","VAT"], kids:KIDS_B, notes:NOTE_STD },
+
+{ id:"hcmc", cat:"city", name:"Ho Chi Minh City Tour", tag:"City", time:"8:00 AM – 5:00 PM", dur:"Full day", imgs:7,
+  sub:"Palace, cathedral, markets & Chinatown",
+  steps:[
+   ["Independence Palace","A symbol of the end of the Vietnam War. See the preserved war rooms and the famous rooftop of 1975."],
+   ["Notre-Dame Cathedral","Built in the 1880s with red bricks from France, one of the city’s most iconic colonial buildings."],
+   ["Saigon Central Post Office","Designed by Gustave Eiffel’s company, a working post office and an architectural gem."],
+   ["War Remnants Museum","The story of the Vietnam War through powerful photos, military relics and survivor accounts."],
+   ["Lunch","At a local restaurant."],
+   ["Binh Tay Market","The lively market of Cholon with local food and vibrant stalls."],
+   ["Thien Hau Temple","A sacred Chinatown temple dedicated to the Lady of the Sea, protector of sailors and merchants."],
+   ["Bach Dang Wharf","Relax on the Saigon River waterfront."]],
+  options:[["Per person",1300000]],
+  inc:["Hotel pick-up and drop-off (District 1)","English-speaking guide","All entrance fees","Bottle of water (500 ml)","Lunch"],
+  exc:["Personal expenses","VAT"], kids:KIDS_B, notes:NOTE_STD },
+
+{ id:"cruise", cat:"city", name:"Saigon Dinner Cruise", tag:"Evening", time:"6:30 PM – 9:30 PM", dur:"Evening", imgs:6,
+  sub:"5-star Indochina Queen cruise, buffet & show",
+  steps:[
+   ["6:30 – 6:45 PM","Car and guide pick you up at your hotel to the 5-star Indochina Queen cruise."],
+   ["7:30 PM · Depart","Night party with dancing, local artist performances and music."],
+   ["Buffet dinner","A buffet with many local Vietnamese and international dishes."],
+   ["Upper deck","Go upstairs for views of the city lights along the Saigon River."],
+   ["9:20 – 9:30 PM","Back at Saigon Port, drop-off at your hotel."]],
+  options:[["Per person",1200000]],
+  inc:["English-speaking guide","Car pick-up and drop-off at your hotel","Buffet dinner","Entertainment program"],
+  exc:["Personal expenses","Tax"], kids:null, notes:[] },
+
+{ id:"vungtau", cat:"beach", name:"Vung Tau Beach 1 Day", tag:"Beach", time:"7:00 AM – 7:00 PM", dur:"Full day", imgs:4,
+  sub:"Christ statue, Back Beach & seafood",
+  steps:[
+   ["7:00 AM","Pick-up at your hotel and drive to Vung Tau."],
+   ["9:00 AM · Back Beach","Free time at Thuy Van Beach, nearly 10 km of smooth sand and white waves."],
+   ["Lunch","Authentic Vietnamese lunch at a local restaurant."],
+   ["1:00 PM · Sightseeing","Christ the King Statue, Thang Tam (Whale) Temple, Bach Dinh (White Palace) and Cape Nghinh Phong."],
+   ["7:00 PM","Return to Ho Chi Minh City."]],
+  options:[["Per person",1200000]],
+  inc:["Air-conditioned van/bus","English-speaking guide","Entrance fees","Lunch at a local restaurant","1 bottle of water per person"],
+  exc:["Extra meals and drinks","Tips (optional)"], kids:null,
+  notes:["Drop-off time may vary due to traffic or weather.","Christ statue: about 1,000 steps up and down. Wear long pants or skirt, no sleeveless shirts (or bring a jacket).","Bring a swimsuit if you plan to swim."] },
+
+{ id:"muine", cat:"beach", name:"Mui Ne – Phan Thiet 1 Day", tag:"Sand dunes", time:"7:00 AM – 8:30 PM", dur:"Full day", imgs:4,
+  sub:"White & red sand dunes, Fairy Stream",
+  steps:[
+   ["7:00 AM","Pick-up at the meeting point. About 2 h 45 min on the new expressway."],
+   ["Bai Da Ong Dia","Coastal spot with unique rock formations and ocean views."],
+   ["Fairy Stream (Suoi Tien)","A shallow creek through red and white sand cliffs, like a mini Red Canyon."],
+   ["Lunch & Mui Ne Beach","Lunch at a local restaurant, then free time under the coconut trees."],
+   ["1:30 PM · White Sand Dunes","Bau Trang, one of Southeast Asia’s rare desert landscapes. Jeep/ATV rental available (not included)."],
+   ["3:30 PM · Red Sand Dunes","Gentle slopes, great photos and sunset over the dunes."],
+   ["4:30 PM","Drive back, arriving in Ho Chi Minh City around 8:00 – 8:30 PM."]],
+  options:[["Per person",1500000]],
+  inc:["Air-conditioned car/van/bus","Lunch","All entrance fees","English-speaking guide","Cool towels and mineral water"],
+  exc:["Personal expenses","Jeep / ATV"], kids:KIDS_A, notes:[] },
+
+{ id:"tayninh", cat:"nature", name:"Tay Ninh: Black Virgin Mountain & Cao Dai", tag:"Cable car", time:"8:00 AM – 6:30 PM", dur:"Full day", imgs:5,
+  sub:"Cao Dai Holy See & Ba Den cable car",
+  steps:[
+   ["8:00 AM","Pick-up from your hotel and drive to Tay Ninh."],
+   ["9:00 AM · Cao Dai Holy See","A unique faith blending Buddhism, Christianity and Confucianism. See the Left Eye of God and the midday prayer."],
+   ["Lunch","Traditional lunch at a local restaurant."],
+   ["Black Virgin Mountain","Cable car to the summit of Ba Den, the highest peak in Southern Vietnam. Pagodas, the giant Buddha statue and panoramic views."],
+   ["6:00 – 6:30 PM","Return to Ho Chi Minh City."]],
+  options:[["Per person",1700000]],
+  inc:["Air-conditioned minivan","English-speaking guide","Entrance fees","Cable car ticket","Lunch at a local restaurant","1 bottle of water per person"],
+  exc:["Tips and personal expenses","Services not mentioned above"], kids:KIDS_A, notes:[] },
+
+{ id:"monkey", cat:"nature", name:"Can Gio Monkey Island", tag:"Eco tour", time:"8:00 AM – 5:00 PM", dur:"Full day", imgs:6,
+  sub:"Mangrove forest, monkeys & speedboat",
+  steps:[
+   ["Morning","Pick-up in District 1, cross the Binh Khanh ferry to Can Gio, the “Monkey Island”."],
+   ["Mangrove forest","Meet over 1,000 monkeys. Feed them and take photos as they climb on your shoulder."],
+   ["Crocodile farm","See huge crocodiles and try crocodile fishing (optional)."],
+   ["Sac Forest guerrilla base","Speedboat into the jungle to see how wartime jungle life really was."],
+   ["Seafood market","Fresh octopus, lobster, ray and dried seafood."],
+   ["Lunch at a beach resort","Sugar cane juice, Vietnamese lunch, then swim and relax."],
+   ["5:00 PM","Back in Ho Chi Minh City."]],
+  options:[["Per person",1100000]],
+  inc:["English-speaking guide","Air-conditioned transport","Ferry tickets, sugar cane juice, 1 bottle of water","Monkey Park entrance","Monkey food and speedboat","Vietnamese lunch","Swimming pool and shower room"],
+  exc:["Drinks at the resort","Crocodile fishing fee","Tips for guides and drivers"], kids:KIDS_C, notes:[] }
+];
+const imgsOf = t => Array.from({length:t.imgs},(_, i)=>`img/${t.id}-${i+1}.jpg`);
+const minPrice = t => Math.min(...t.options.map(o=>o[1]));
+
+/* filters + grid */
+const CATS = [["all","All tours"],["history","History"],["nature","Mekong & nature"],["beach","Beach"],["city","City & night"]];
+const fEl = document.getElementById("tours"), gEl = document.getElementById("grid");
+let cat = "all";
+function drawFilters(){
+  fEl.innerHTML = CATS.map(([k,l])=>`<button class="${k===cat?'on':''}" data-c="${k}">${l}</button>`).join("");
+}
+function drawGrid(){
+  gEl.innerHTML = TOURS.filter(t=>cat==="all"||t.cat===cat).map(t=>`
+    <button class="card" data-id="${t.id}">
+      <div class="ph"><img src="img/${t.id}-1.jpg" alt="${t.name}" loading="lazy"><span class="badge">${t.tag}</span></div>
+      <div class="body">
+        <h3>${t.name}</h3>
+        <div class="sub">${t.sub}</div>
+        <div class="sub">🕒 ${t.time}</div>
+        <div class="foot"><div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div><span class="more">Details →</span></div>
+      </div>
+    </button>`).join("");
+}
+fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;drawFilters();drawGrid();});
+gEl.addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openTour(c.dataset.id);});
+drawFilters();drawGrid();
+
+/* price table */
+document.getElementById("ptable").innerHTML = TOURS.map(t=>`
+  <div class="prow"><div class="n">${t.name}<small>${t.dur} · ${t.time}</small></div>
+  <div class="v">${t.options.length>1?'from ':''}${fmt(minPrice(t))}</div>
+  <button data-id="${t.id}">View</button></div>`).join("");
+document.getElementById("ptable").addEventListener("click",e=>{const b=e.target.closest("button");if(b)openTour(b.dataset.id);});
+
+/* whatsapp */
+const wa = msg => `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
+document.getElementById("ctaMain").href = wa("Hello Vietnam Memory Travel! I'd like to book a tour.");
+
+/* modal */
+const modal = document.getElementById("modal");
+let gi = 0, cur = null;
+function showImg(i){
+  const list = imgsOf(cur); gi = (i+list.length)%list.length;
+  document.getElementById("gImg").src = list[gi];
+  document.getElementById("gImg").alt = cur.name;
+  [...document.querySelectorAll("#thumbs img")].forEach((im,k)=>im.classList.toggle("on",k===gi));
+}
+function openTour(id){
+  cur = TOURS.find(t=>t.id===id);
+  const t = cur;
+  document.getElementById("thumbs").innerHTML = imgsOf(t).map((s,k)=>`<img src="${s}" data-k="${k}" alt="">`).join("");
+  const li = (a,c) => `<ul class="list ${c}">${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  document.getElementById("mBody").innerHTML = `
+    <h2 id="mTitle">${t.name}</h2>
+    <div class="meta"><span>🕒 ${t.time}</span><span>🗣️ English-speaking guide</span><span>🚐 Hotel pick-up</span></div>
+    <h4>Tour program</h4>
+    <ul class="steps">${t.steps.map(s=>`<li><b>${s[0]}</b><p>${s[1]}</p></li>`).join("")}</ul>
+    <h4>Price per person</h4>
+    <div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>
+    <div class="two">
+      <div><h4>Included</h4>${li(t.inc,"yes")}</div>
+      <div><h4>Not included</h4>${li(t.exc,"no")}</div>
+    </div>
+    ${t.kids?`<h4>Children policy</h4>${li(t.kids,"dot")}`:""}
+    ${t.notes.length?`<h4>Good to know</h4>${li(t.notes,"dot")}`:""}
+    <div class="book">
+      <h3>Book this tour</h3>
+      <div class="fields">
+        ${t.options.length>1?`<label class="full">Group option<select id="bOpt">${t.options.map((o,k)=>`<option value="${k}">${o[0]} – ${fmt(o[1])}</option>`).join("")}</select></label>`:""}
+        <label>Date<input type="date" id="bDate"></label>
+        <label>Adults<input type="number" id="bAd" min="1" value="2"></label>
+        <label>Children (3–9)<input type="number" id="bCh" min="0" value="0"></label>
+        <label>Your name<input type="text" id="bName" placeholder="Name"></label>
+        <label class="full">Hotel (for pick-up)<input type="text" id="bHotel" placeholder="Hotel name / address"></label>
+      </div>
+      <div class="est">Estimated total: <b id="bTot"></b></div>
+      <div class="bbtns">
+        <a class="btn btn-wa" id="bWa" target="_blank" rel="noopener">Book via WhatsApp</a>
+        <a class="btn btn-zalo" href="${ZALO}" target="_blank" rel="noopener">Chat on Zalo</a>
+        <a class="btn btn-ghost" href="tel:+${PHONE}">☎ Call</a>
+      </div>
+    </div>`;
+  const d = new Date(); d.setDate(d.getDate()+1);
+  document.getElementById("bDate").value = d.toISOString().slice(0,10);
+  document.getElementById("bDate").min = new Date().toISOString().slice(0,10);
+  document.querySelector(".book").addEventListener("input", updateBook);
+  updateBook();
+  showImg(0);
+  modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+  document.body.classList.add("locked");
+  modal.scrollTop = 0;
+  history.replaceState(null,"","#"+t.id);
+}
+function updateBook(){
+  const t = cur, v = id => document.getElementById(id)?.value || "";
+  const k = +v("bOpt") || 0, o = t.options[k];
+  const ad = Math.max(1, +v("bAd") || 1), ch = Math.max(0, +v("bCh") || 0);
+  const kidRate = t.kids ? .75 : 1;
+  document.getElementById("bTot").textContent = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
+  const msg = [`Hello Vietnam Memory Travel! I'd like to book:`,
+    `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"",
+    `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
+    v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
+  document.getElementById("bWa").href = wa(msg);
+}
+function closeTour(){
+  modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
+  document.body.classList.remove("locked"); history.replaceState(null,"",location.pathname);
+}
+document.getElementById("mClose").onclick = closeTour;
+modal.addEventListener("click",e=>{ if(e.target===modal) closeTour(); });
+document.addEventListener("keydown",e=>{ if(!modal.classList.contains("open"))return;
+  if(e.key==="Escape")closeTour(); if(e.key==="ArrowRight")showImg(gi+1); if(e.key==="ArrowLeft")showImg(gi-1); });
+document.getElementById("gPrev").onclick = ()=>showImg(gi-1);
+document.getElementById("gNext").onclick = ()=>showImg(gi+1);
+document.getElementById("thumbs").addEventListener("click",e=>{ if(e.target.dataset.k) showImg(+e.target.dataset.k); });
+let sx=0; const gal=document.querySelector(".gal");
+gal.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+gal.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) showImg(gi+(dx<0?1:-1));});
+const h = location.hash.slice(1); if (TOURS.some(t=>t.id===h)) openTour(h);
+</script>
+</body>
+</html>
