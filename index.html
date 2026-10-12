@@ -59,6 +59,15 @@ header{position:sticky;top:0;z-index:20;background:var(--brand);box-shadow:0 2px
 .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .card:hover .ph img{transform:scale(1.05)}
 .badge{position:absolute;top:10px;left:10px;color:#fff;background:var(--accent);backdrop-filter:blur(4px);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+/* best seller: big pulsing badge with shine */
+.badge.hot{top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:8px 16px 8px 12px;background:linear-gradient(135deg,#e81c1c,#ff6a00 55%,#ffb300);overflow:hidden;transform-origin:left center;box-shadow:0 4px 14px rgba(232,28,28,.45);animation:hotPop 1.2s ease-in-out infinite}
+.badge.hot i{font-style:normal;font-size:18px;animation:hotFlame .6s ease-in-out infinite alternate}
+.badge.hot::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:hotShine 2.4s ease-in-out infinite}
+@keyframes hotPop{0%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(232,28,28,.45),0 0 0 0 rgba(255,106,0,.7)}50%{transform:scale(1.14);box-shadow:0 6px 20px rgba(232,28,28,.6),0 0 0 10px rgba(255,106,0,0)}}
+@keyframes hotFlame{from{transform:scale(1) rotate(-8deg)}to{transform:scale(1.25) rotate(8deg)}}
+@keyframes hotShine{0%,55%{left:-60%}100%{left:130%}}
+.card.is-hot{border:2px solid #ff6a00;box-shadow:0 6px 22px rgba(255,106,0,.22)}
+@media(prefers-reduced-motion:reduce){.badge.hot,.badge.hot i,.badge.hot::after{animation:none}}
 .card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card h3{font-size:17px;font-weight:700;line-height:1.3}
 .card .sub{color:var(--muted);font-size:13px}
@@ -307,7 +316,7 @@ const KIDS_C = ["1 – 3 years old: free", "4 – 9 years old: 75% of adult pric
 const NOTE_STD = ["Tour order may change depending on the actual situation, but all attractions are covered.", "Tell us about food allergies in advance so we can arrange suitable dishes.", "If anything comes up during the tour, call us right away."];
 
 const TOURS = [
-{ id:"cuchimekong", cat:"history", name:"Cu Chi Tunnels & Mekong Delta", tag:"Best seller", time:"7:30 AM – 7:30 PM", dur:"Full day", imgs:7,
+{ id:"cuchimekong", cat:"history", name:"Cu Chi Tunnels & Mekong Delta", tag:"Best seller", hot:true, time:"7:30 AM – 7:30 PM", dur:"Full day", imgs:7,
   sub:"History and river life in one day",
   steps:[
    ["Cu Chi Tunnels","Watch the documentary video, crawl into the tunnels and visit the underground bunkers: meeting rooms, hospitals and ammunition stores."],
@@ -322,7 +331,7 @@ const TOURS = [
   inc:["Hotel pick-up and drop-off (District 1)","Lunch","All entrance fees","English-speaking guide","1 bottle of water (0.5 L) per person"],
   exc:["Personal expenses","Shooting range","VAT"], kids:KIDS_B, notes:NOTE_STD },
 
-{ id:"cuchi", cat:"history", name:"Cu Chi Tunnels Half Day", tag:"Half day", time:"Morning 7:30 AM · Afternoon 12:30 PM", dur:"Half day", imgs:6,
+{ id:"cuchi", cat:"history", name:"Cu Chi Tunnels Half Day", tag:"Best seller", hot:true, time:"Morning 7:30 AM · Afternoon 12:30 PM", dur:"Half day", imgs:6,
   sub:"Morning or afternoon departure",
   steps:[
    ["Pick-up","From hotels in District 1, or meet at our office if you stay in another district. About 1.5 hours drive to Cu Chi."],
@@ -334,7 +343,7 @@ const TOURS = [
   inc:["Air-conditioned car, pick-up and drop-off in District 1","English-speaking guide","All entrance fees","Bottle of water per person"],
   exc:["Personal expenses","Bullets at the shooting range","VAT"], kids:KIDS_B, notes:[] },
 
-{ id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Popular", time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
+{ id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Best seller", hot:true, time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
   sub:"My Tho · Ben Tre · 4 islands",
   steps:[
    ["Vinh Trang Pagoda","A unique blend of Vietnamese, Chinese and European architecture with intricate carvings and impressive statues."],
@@ -452,8 +461,8 @@ function drawFilters(){
 }
 function drawGrid(){
   gEl.innerHTML = TOURS.filter(t=>cat==="all"||t.cat===cat).map(t=>`
-    <button class="card" data-id="${t.id}">
-      <div class="ph"><img src="img/${t.id}-1.jpg" alt="${t.name}" loading="lazy"><span class="badge">${t.tag}</span></div>
+    <button class="card${t.hot?" is-hot":""}" data-id="${t.id}">
+      <div class="ph"><img src="img/${t.id}-1.jpg" alt="${t.name}" loading="lazy">${t.hot?`<span class="badge hot"><i>🔥</i>Best seller</span>`:`<span class="badge">${t.tag}</span>`}</div>
       <div class="body">
         <h3>${t.name}</h3>
         <div class="sub">${t.sub}</div>
