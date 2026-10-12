@@ -60,13 +60,13 @@ header{position:sticky;top:0;z-index:20;background:var(--brand);box-shadow:0 2px
 .card:hover .ph img{transform:scale(1.05)}
 .badge{position:absolute;top:10px;left:10px;color:#fff;background:var(--accent);backdrop-filter:blur(4px);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
 /* best seller: big pulsing badge with shine */
-.badge.hot{top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:8px 16px 8px 12px;background:linear-gradient(135deg,#e81c1c,#ff6a00 55%,#ffb300);overflow:hidden;transform-origin:left center;box-shadow:0 4px 14px rgba(232,28,28,.45);animation:hotPop 1.2s ease-in-out infinite}
+.badge.hot{top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:8px 16px 8px 12px;color:#b3001b;border:2px solid #fff;background:linear-gradient(135deg,#fff35c,#ffd000 50%,#ffb800);overflow:hidden;transform-origin:left center;box-shadow:0 4px 14px rgba(0,0,0,.35);animation:hotPop 1.2s ease-in-out infinite}
 .badge.hot i{font-style:normal;font-size:18px;animation:hotFlame .6s ease-in-out infinite alternate}
-.badge.hot::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);animation:hotShine 2.4s ease-in-out infinite}
-@keyframes hotPop{0%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(232,28,28,.45),0 0 0 0 rgba(255,106,0,.7)}50%{transform:scale(1.14);box-shadow:0 6px 20px rgba(232,28,28,.6),0 0 0 10px rgba(255,106,0,0)}}
+.badge.hot::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.9),transparent);transform:skewX(-20deg);animation:hotShine 2.4s ease-in-out infinite}
+@keyframes hotPop{0%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 0 0 rgba(255,208,0,.85)}50%{transform:scale(1.14);box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 0 12px rgba(255,208,0,0)}}
 @keyframes hotFlame{from{transform:scale(1) rotate(-8deg)}to{transform:scale(1.25) rotate(8deg)}}
 @keyframes hotShine{0%,55%{left:-60%}100%{left:130%}}
-.card.is-hot{border:2px solid #ff6a00;box-shadow:0 6px 22px rgba(255,106,0,.22)}
+.card.is-hot{border:2px solid #ffc400;box-shadow:0 6px 22px rgba(255,196,0,.35)}
 @media(prefers-reduced-motion:reduce){.badge.hot,.badge.hot i,.badge.hot::after{animation:none}}
 .card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card h3{font-size:17px;font-weight:700;line-height:1.3}
