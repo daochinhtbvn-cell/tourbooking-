@@ -154,8 +154,9 @@ body.locked .cta{display:none}
 .modal.open{display:flex}
 .sheet{background:var(--bg2);border:1px solid var(--line);border-radius:18px;max-width:860px;width:100%;overflow:hidden;position:relative}
 .x{position:absolute;top:10px;right:10px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:22px;cursor:pointer;line-height:1}
-.gal{position:relative;aspect-ratio:16/9;background:#000}
-.gal img{width:100%;height:100%;object-fit:cover}
+.gal{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+.gal::before{content:"";position:absolute;inset:-20px;background:var(--gbg) center/cover;filter:blur(18px) brightness(.55)}
+.gal img{position:relative;width:100%;height:100%;object-fit:contain}
 .gal .nav-b{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.5);color:#fff;font-size:20px;cursor:pointer}
 .gal .prev{left:10px}.gal .next{right:10px}
 .thumbs{display:flex;gap:6px;padding:8px;overflow-x:auto;background:#eef3f8}
@@ -190,6 +191,35 @@ body.locked .cta{display:none}
 .est{margin:12px 0;font-size:14px;color:var(--muted)}.est b{color:var(--accent);font-size:18px}
 .bbtns{display:flex;gap:8px;flex-wrap:wrap}
 .bbtns .btn{flex:1;min-width:150px;padding:12px 14px;font-size:14px}
+.was{color:var(--muted);text-decoration:line-through;font-size:13px;margin-right:4px;font-weight:500}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:16px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:90vh;border-radius:8px}
+.lb .x{background:rgba(255,255,255,.2)}
+.off{display:inline-block;background:#e53935;color:#fff;font-size:11px;font-weight:800;padding:1px 6px;border-radius:6px;margin-left:4px;vertical-align:middle;text-decoration:none}
+.couple{font-size:12.5px;color:#d81b60;font-weight:700;margin-top:4px}
+.cmp .couple{font-size:12px}
+.opt small{color:var(--muted);font-weight:400}
+.save{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:#2e9e5b;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
+/* blinking WhatsApp CTAs */
+@keyframes waBlink{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(242,107,29,.7)}50%{transform:scale(1.07);box-shadow:0 0 0 14px rgba(242,107,29,0)}}
+@keyframes waFlash{0%,100%{filter:brightness(1)}50%{filter:brightness(1.25)}}
+#ctaMain{animation:waBlink 1.1s ease-in-out infinite,waFlash .55s steps(2) infinite}
+.wa-float{position:fixed;right:18px;bottom:96px;z-index:31;width:62px;height:62px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);animation:waRing 1.1s ease-in-out infinite;text-decoration:none}
+.wa-float svg{width:34px;height:34px}
+.wa-float span{position:absolute;right:70px;white-space:nowrap;background:#fff;color:#0b6b35;font-weight:800;font-size:13px;padding:6px 10px;border-radius:999px;box-shadow:var(--shadow);animation:waFlash .8s steps(2) infinite}
+@keyframes waRing{0%,100%{transform:scale(1) rotate(0);box-shadow:0 0 0 0 rgba(37,211,102,.75)}25%{transform:scale(1.1) rotate(-10deg)}50%{transform:scale(1.1) rotate(10deg);box-shadow:0 0 0 18px rgba(37,211,102,0)}75%{transform:scale(1.05) rotate(0)}}
+body.locked .wa-float{display:none}
+@media(max-width:520px){.wa-float span{display:none}.wa-float{bottom:88px;right:12px;width:54px;height:54px}}
+@media(prefers-reduced-motion:reduce){#ctaMain,.wa-float,.wa-float span{animation:none}}
+.team{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px;align-items:start}
+.team .txt{background:var(--card);box-shadow:var(--shadow);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.team .txt p{color:var(--muted);font-size:15px;margin-bottom:10px}
+.team .txt ul{margin-top:6px}
+.tpics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tpics img{width:100%;aspect-ratio:1;object-fit:cover;object-position:center 25%;border-radius:10px;cursor:zoom-in}
+.tpics img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;height:100%}
+@media(max-width:760px){.team{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -197,7 +227,7 @@ body.locked .cta{display:none}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#">Vietnam Memory <span>Travel</span></a>
-    <nav class="nav-links"><a href="#tours">Tours</a><a href="#reviews">Reviews</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
+    <nav class="nav-links"><a href="#tours">Tours</a><a href="#team">About us</a><a href="#reviews">Reviews</a><a href="#prices">Prices</a><a href="#why">Why us</a><a href="#office">Our office</a></nav>
     <a class="nav-call" href="tel:+84789755448" data-contact="call">☎ +84 789 755 448</a>
   </div>
 </header>
@@ -215,6 +245,30 @@ body.locked .cta{display:none}
 
   <div id="tours" class="filters" role="tablist"></div>
   <div class="grid" id="grid"></div>
+
+  <section id="team">
+    <h2>Meet our team</h2>
+    <p class="lead">Real people behind the counter, right next to Ben Thanh Market.</p>
+    <div class="team">
+      <div class="txt">
+        <p><b>Vietnam Memory Travel</b> runs a walk-in Tourist Information Center at 04 Thu Khoa Huan, District 1. Every day our team helps travelers from all over the world plan their days in Saigon, from Cu Chi and the Mekong Delta to beaches, bus, train and flight tickets.</p>
+        <p>Drop by before you book. Ask us anything, compare the tours in person and pay at the counter, or simply message us on WhatsApp.</p>
+        <ul class="list yes">
+          <li>Friendly, English-speaking staff</li>
+          <li>Office open daily, a short walk from Ben Thanh Market</li>
+        </ul>
+      </div>
+      <div class="tpics" id="teamPics">
+        <img src="img/team-1.jpg" alt="Our team at the Vietnam Memory Travel office" loading="lazy">
+        <img src="img/team-2.jpg" alt="Helping travelers at our tour booking counter" loading="lazy">
+        <img src="img/team-3.jpg" alt="Travelers planning their tours at our counter" loading="lazy">
+        <img src="img/team-4.jpg" alt="Happy guests with our team" loading="lazy">
+        <img src="img/team-5.jpg" alt="A family booking their tours with us" loading="lazy">
+        <img src="img/team-6.jpg" alt="Guests with our staff near Ben Thanh Market" loading="lazy">
+        <img src="img/team-7.jpg" alt="A guest with our staff at the office" loading="lazy">
+      </div>
+    </div>
+  </section>
 
   <section id="reviews">
     <h2>Don’t just take our word for it</h2>
@@ -289,6 +343,10 @@ body.locked .cta{display:none}
   <a class="btn btn-ghost" href="tel:+84789755448" data-contact="call" aria-label="Call us">☎<span class="hide-s"> Call</span></a>
 </div>
 
+<a class="wa-float" href="https://wa.me/84789755448" data-contact="wa" aria-label="Chat on WhatsApp"><span>Chat with us!</span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg></a>
+
+<div class="lb" id="lb"><button class="x" id="lbClose" aria-label="Close">×</button><img id="lbImg" alt=""></div>
+
 <div class="cbox" id="cbox" aria-hidden="true">
   <div class="cpanel" role="dialog" aria-modal="true" aria-labelledby="cTitle">
     <button class="x" id="cClose" aria-label="Close">×</button>
@@ -309,6 +367,14 @@ body.locked .cta{display:none}
 const PHONE = "84789755448";           // hotline (call)
 const PHONE_TXT = "+84 789 755 448";
 const fmt = n => n.toLocaleString("en-US") + " VND";
+// Cu Chi tours are priced in USD like tunnelcuchi.com: our real price is shown as "10% off",
+// the crossed-out price is raised so -10% lands on it; couples (2+ adults) get 20% off that.
+const OFF = .10, COUPLE = .20;
+const usd = n => "$" + n;
+const list = b => Math.round(b/(1-OFF)), pair = b => Math.round(list(b)*(1-COUPLE));
+const priceHTML = t => t.usd
+  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${usd(list(t.options[0][1]))}</span><b>${usd(t.options[0][1])}</b><div class="couple">💑 Couple: ${usd(pair(t.options[0][1]))}/person (-20%)</div></div>`
+  : `<div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div>`;
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
 const KIDS_B = ["Under 3 years old: free", "9 years old and under: 75% of adult price", "10 years and above: adult price"];
@@ -331,17 +397,58 @@ const TOURS = [
   inc:["Hotel pick-up and drop-off (District 1)","Lunch","All entrance fees","English-speaking guide","1 bottle of water (0.5 L) per person"],
   exc:["Personal expenses","Shooting range","VAT"], kids:KIDS_B, notes:NOTE_STD },
 
-{ id:"cuchi", cat:"history", name:"Cu Chi Tunnels Half Day", tag:"Best seller", hot:true, time:"Morning 7:30 AM · Afternoon 12:30 PM", dur:"Half day", imgs:6,
-  sub:"Morning or afternoon departure",
+{ id:"bendinh", cat:"history", usd:true, time:"Morning 8:00 AM · Afternoon 12:30 PM", name:"Cu Chi Tunnels – Ben Dinh", tag:"Best seller", hot:true, dur:"Half day",
+  sub:"Morning or afternoon · group tour by bus/van",
+  imgs:10,
+  departs:[["Morning","Pick-up 8:00 AM · back about 2:30 PM"],["Afternoon","Pick-up 12:30 PM · back about 7:00 PM"]],
   steps:[
-   ["Pick-up","From hotels in District 1, or meet at our office if you stay in another district. About 1.5 hours drive to Cu Chi."],
-   ["Documentary","Watch a film about the history and construction of the tunnel system built during the Vietnam War."],
-   ["Into the tunnels","Crawl through narrow passages and see living quarters, kitchens, field hospitals, hidden trapdoors and booby traps."],
-   ["Wartime snack","Enjoy cassava and tea, the traditional snack of Vietnamese guerrillas."],
-   ["Shooting range (optional)","Try rifles such as the AK-47 and M16, extra fee."]],
-  options:[["Small group, max 12 people · Minivan",700000],["Medium group, 17 people · Limousine",650000],["Large group, max 25 people · Minibus",500000]],
-  inc:["Air-conditioned car, pick-up and drop-off in District 1","English-speaking guide","All entrance fees","Bottle of water per person"],
-  exc:["Personal expenses","Bullets at the shooting range","VAT"], kids:KIDS_B, notes:[] },
+   ["Pick-up","From your hotel in District 1, or meet at our office. About 2 hours’ drive (60 km) past rice fields and rivers."],
+   ["War documentary","Start with a short film about the history of Cu Chi and how the tunnel network was built."],
+   ["Tunnel network","Walk the jungle trail and crawl through tunnel sections, see camouflaged trapdoors, booby traps and underground bunkers."],
+   ["Smokeless kitchen","See how soldiers cooked on hidden “Hoang Cam” stoves and taste tapioca (cassava), their wartime food."],
+   ["Shooting range (optional)","Fire an AK-47 or M16, paid on the spot."],
+   ["Return","Drive back to Saigon and drop-off at your hotel."]],
+  options:[["Group tour, max 27 people · Air-con bus/van",20,13]],
+  inc:["Air-conditioned bus or van","Pick-up and drop-off at hotels in District 1","English-speaking guide","Entrance fee","Tapioca","Mineral water"],
+  exc:["Shooting range","Personal expenses","Tips (optional)"],
+  kids:["Under 4 years old: free","4 – 11 years old: $13","12 years and above: adult price"],
+  notes:["Wear comfortable shoes and bring insect repellent.","Crawling into the tunnels is optional."] },
+
+{ id:"benduoc", cat:"history", usd:true, time:"Morning 7:30 AM · Noon 12:00 PM", name:"Cu Chi Ben Duoc Tunnels – Luxury Minivan", tag:"Less touristy", dur:"Half day",
+  sub:"Authentic & quieter site · small group",
+  imgs:10,
+  departs:[["Morning","Pick-up 7:30 – 8:00 AM · back about 2:30 PM"],["Noon","Pick-up 12:00 – 12:30 PM · back about 7:00 PM"]],
+  steps:[
+   ["Hotel pick-up","Our guide meets you at your hotel in Ho Chi Minh City with a brand-new air-conditioned minivan."],
+   ["Ben Duoc Tunnels","Arrive at the original, less touristy tunnel site and watch a short documentary about the war."],
+   ["Into the tunnels","Crawl through narrow underground tunnels and spot the camouflaged trapdoors and traps."],
+   ["Underground base","Visit the command center, weapon storage and the hospital bunker."],
+   ["Wartime snack","Try cassava and tea, the food guerrillas lived on during the war."],
+   ["Shooting range (optional)","Try an AK-47 or M16, extra fee."],
+   ["Return","Drive back to Ho Chi Minh City and drop-off at your hotel."]],
+  options:[["Small group · Luxury minivan",24,18]],
+  inc:["Brand-new luxury minivan with hotel pick-up","English-speaking guide","All entrance fees","Drinking water, a cake and cool tissues"],
+  exc:["Shooting range","Personal expenses, travel insurance","Tips (optional)"],
+  kids:["Under 5 years old: free","5 – 11 years old: $18","12 years and above: adult price"],
+  notes:["Bring comfortable shoes, insect repellent, cash and your camera.","Crawling into the tunnels is optional."] },
+
+{ id:"speedboat", cat:"history", usd:true, time:"Morning 7:00 AM · Afternoon 11:00 AM", name:"Cu Chi Tunnels by Speedboat", tag:"Premium", dur:"Half day · 6 hours",
+  sub:"Saigon River cruise · breakfast & lunch included",
+  imgs:10,
+  departs:[["Morning","7:00 AM – 1:00 PM"],["Afternoon","11:00 AM – 5:00 PM (same program, later start)"]],
+  steps:[
+   ["07:00 · Hotel pick-up","Your guide meets you in the hotel lobby and takes you to the speedboat at Bach Dang pier."],
+   ["07:20 · Speedboat departs","Light breakfast on board: sandwiches or pastries, fresh fruit and Vietnamese iced coffee, with commentary on the riverbank life."],
+   ["08:40 · Arrive at Cu Chi","A short introduction video about the area."],
+   ["09:00 · Explore the tunnels","Weapons and booby-trap exhibits, an optional tunnel crawl, underground bunkers and cassava tasting. Shooting range optional, paid separately."],
+   ["11:00 · Riverside lunch","A traditional Vietnamese lunch by the river."],
+   ["11:30 · Cruise back","Relax on the boat back to the city."],
+   ["13:00 · Back at Bach Dang pier","Drop-off at your hotel."]],
+  options:[["Speedboat · max 15 guests",95,69]],
+  inc:["Speedboat on the Saigon River","Light breakfast and lunch","Unlimited refreshments and local fruit","English-speaking guide","All entrance fees","Hotel pick-up and drop-off (central hotels)","Travel insurance","Government tax and service charge"],
+  exc:["Extra food and drinks","Shooting range (about 75,000 VND per bullet)","Tips (optional)"],
+  kids:["0 – 3 years old: free","4 – 12 years old: $69","Child-sized life jackets provided"],
+  notes:["Pick-up in central District 1 & 3. Other areas: meet at the Saigon Water Bus Station.","Passport number required by local authorities, send it when booking.","Light rain is fine: boats have rain covers, ponchos and umbrellas. Vegetarian meals on request."] },
 
 { id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Best seller", hot:true, time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
   sub:"My Tho · Ben Tre · 4 islands",
@@ -467,7 +574,7 @@ function drawGrid(){
         <h3>${t.name}</h3>
         <div class="sub">${t.sub}</div>
         <div class="sub">🕒 ${t.time}</div>
-        <div class="foot"><div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div><span class="more">Details →</span></div>
+        <div class="foot">${priceHTML(t)}<span class="more">Details →</span></div>
       </div>
     </button>`).join("");
 }
@@ -478,11 +585,16 @@ drawFilters();drawGrid();
 /* price table */
 document.getElementById("ptable").innerHTML = TOURS.map(t=>`
   <div class="prow"><div class="n">${t.name}<small>${t.dur} · ${t.time}</small></div>
-  <div class="v">${t.options.length>1?'from ':''}${fmt(minPrice(t))}</div>
+  <div class="v">${t.usd?`<span class="was">${usd(list(minPrice(t)))}</span>${usd(minPrice(t))} <span class="off">-10%</span>`:`${t.options.length>1?'from ':''}${fmt(minPrice(t))}`}</div>
   <button data-id="${t.id}">View</button></div>`).join("");
 document.getElementById("ptable").addEventListener("click",e=>{const b=e.target.closest("button");if(b)openTour(b.dataset.id);});
 
-/* whatsapp */
+/* team photos lightbox */
+const lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg");
+document.getElementById("teamPics").addEventListener("click",e=>{ if(e.target.tagName!=="IMG")return; lbImg.src=e.target.src; lb.classList.add("open"); document.body.classList.add("locked"); });
+function closeLb(){ lb.classList.remove("open"); if(!document.getElementById("modal").classList.contains("open")) document.body.classList.remove("locked"); }
+document.getElementById("lbClose").onclick = closeLb;
+lb.addEventListener("click",e=>{ if(e.target===lb) closeLb(); });
 
 /* modal */
 const modal = document.getElementById("modal");
@@ -490,6 +602,7 @@ let gi = 0, cur = null;
 function showImg(i){
   const list = imgsOf(cur); gi = (i+list.length)%list.length;
   document.getElementById("gImg").src = list[gi];
+  document.querySelector(".gal").style.setProperty("--gbg", `url(${list[gi]})`);
   document.getElementById("gImg").alt = cur.name;
   [...document.querySelectorAll("#thumbs img")].forEach((im,k)=>im.classList.toggle("on",k===gi));
 }
@@ -501,10 +614,12 @@ function openTour(id){
   document.getElementById("mBody").innerHTML = `
     <h2 id="mTitle">${t.name}</h2>
     <div class="meta"><span>🕒 ${t.time}</span><span>🗣️ English-speaking guide</span><span>🚐 Hotel pick-up</span></div>
+    ${t.departs?`<h4>Departures</h4><div class="opts">${t.departs.map(d=>`<div class="opt"><span>${d[1]}</span><b>${d[0]}</b></div>`).join("")}</div>`:""}
     <h4>Tour program</h4>
     <ul class="steps">${t.steps.map(s=>`<li><b>${s[0]}</b><p>${s[1]}</p></li>`).join("")}</ul>
     <h4>Price per person</h4>
-    <div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>
+    ${t.usd ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>Now 10% off</small></span><b><span class="was">${usd(list(o[1]))}</span>${usd(o[1])}</b></div><div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${usd(list(o[1]))}</span>${usd(pair(o[1]))}</b></div><div class="opt"><span>Child</span><b>${usd(o[2])}</b></div></div>`).join("")
+      : `<div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>`}
     <div class="two">
       <div><h4>Included</h4>${li(t.inc,"yes")}</div>
       <div><h4>Not included</h4>${li(t.exc,"no")}</div>
@@ -516,9 +631,10 @@ function openTour(id){
       <h3>Book this tour</h3>
       <div class="fields">
         ${t.options.length>1?`<label class="full">Group option<select id="bOpt">${t.options.map((o,k)=>`<option value="${k}">${o[0]} – ${fmt(o[1])}</option>`).join("")}</select></label>`:""}
+        ${t.departs?`<label class="full">Departure<select id="bDep">${t.departs.map((d,k)=>`<option value="${k}">${d[0]} – ${d[1]}</option>`).join("")}</select></label>`:""}
         <label>Date<input type="date" id="bDate"></label>
         <label>Adults<input type="number" id="bAd" min="1" value="2"></label>
-        <label>Children (3–9)<input type="number" id="bCh" min="0" value="0"></label>
+        <label>Children (${t.usd?"4–11":"3–9"})<input type="number" id="bCh" min="0" value="0"></label>
         <label>Your name<input type="text" id="bName" placeholder="Name"></label>
         <label class="full">Hotel (for pick-up)<input type="text" id="bHotel" placeholder="Hotel name / address"></label>
       </div>
@@ -544,10 +660,20 @@ function updateBook(){
   const k = +v("bOpt") || 0, o = t.options[k];
   const ad = Math.max(1, +v("bAd") || 1), ch = Math.max(0, +v("bCh") || 0);
   const kidRate = t.kids ? .75 : 1;
-  document.getElementById("bTot").textContent = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
+  let tot;
+  if (t.usd) {
+    const adP = ad>=2 ? pair(o[1]) : o[1];
+    tot = usd(adP*ad + o[2]*ch);
+    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${usd((list(o[1])-adP)*ad)}${ad>=2?" · couple price":""}</span>`;
+  } else {
+    tot = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
+    document.getElementById("bTot").textContent = tot;
+  }
+  const dep = t.departs ? t.departs[+v("bDep") || 0] : null;
   const msg = [`Hello Vietnam Memory Travel! I'd like to book:`,
-    `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"",
+    `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"", dep?`Departure: ${dep[0]} (${dep[1]})`:"",
     `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
+    `Estimated total: ${tot}${t.usd?(ad>=2?" (couple price -20%)":" (-10%)"):""}`,
     v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
   bookingMsg = msg;
 }
@@ -613,6 +739,7 @@ document.getElementById("mClose").onclick = closeTour;
 modal.addEventListener("click",e=>{ if(e.target===modal) closeTour(); });
 document.addEventListener("keydown",e=>{
   if(cbox.classList.contains("open")){ if(e.key==="Escape") closeContact(); return; }
+  if(lb.classList.contains("open")){ if(e.key==="Escape") closeLb(); return; }
   if(!modal.classList.contains("open"))return;
   if(e.key==="Escape")closeTour(); if(e.key==="ArrowRight")showImg(gi+1); if(e.key==="ArrowLeft")showImg(gi-1); });
 document.getElementById("gPrev").onclick = ()=>showImg(gi-1);
@@ -621,7 +748,7 @@ document.getElementById("thumbs").addEventListener("click",e=>{ if(e.target.data
 let sx=0; const gal=document.querySelector(".gal");
 gal.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
 gal.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) showImg(gi+(dx<0?1:-1));});
-const h = location.hash.slice(1); if (TOURS.some(t=>t.id===h)) openTour(h);
+const h = location.hash.slice(1) === "cuchi" ? "bendinh" : location.hash.slice(1); if (TOURS.some(t=>t.id===h)) openTour(h);
 </script>
 </body>
 </html>
