@@ -454,6 +454,18 @@ const TOURS = [
   kids:["0 – 3 years old: free","4 – 12 years old: 1,790,000 VND","Child-sized life jackets provided"],
   notes:["Pick-up in central District 1 & 3. Other areas: meet at the Saigon Water Bus Station.","Passport number required by local authorities, send it when booking.","Light rain is fine: boats have rain covers, ponchos and umbrellas. Vegetarian meals on request."] },
 
+{ id:"cuchi", cat:"history", name:"Cu Chi Tunnels Half Day – Luxury & Medium Group", tag:"Luxury · Limousine", time:"Morning 7:30 AM · Afternoon 12:30 PM", dur:"Half day", imgs:6,
+  sub:"Smaller groups · Minivan or Limousine",
+  steps:[
+   ["Pick-up","From hotels in District 1, or meet at our office if you stay in another district. About 1.5 hours drive to Cu Chi."],
+   ["Documentary","Watch a film about the history and construction of the tunnel system built during the Vietnam War."],
+   ["Into the tunnels","Crawl through narrow passages and see living quarters, kitchens, field hospitals, hidden trapdoors and booby traps."],
+   ["Wartime snack","Enjoy cassava and tea, the traditional snack of Vietnamese guerrillas."],
+   ["Shooting range (optional)","Try rifles such as the AK-47 and M16, extra fee."]],
+  options:[["Luxury group, max 12 people · Minivan",700000],["Medium group, 17 people · Limousine",650000]],
+  inc:["Air-conditioned car, pick-up and drop-off in District 1","English-speaking guide","All entrance fees","Bottle of water per person"],
+  exc:["Personal expenses","Bullets at the shooting range","VAT"], kids:KIDS_B, notes:[] },
+
 { id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Best seller", hot:true, time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
   sub:"My Tho · Ben Tre · 4 islands",
   steps:[
@@ -752,7 +764,7 @@ document.getElementById("thumbs").addEventListener("click",e=>{ if(e.target.data
 let sx=0; const gal=document.querySelector(".gal");
 gal.addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
 gal.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>40) showImg(gi+(dx<0?1:-1));});
-const h = location.hash.slice(1) === "cuchi" ? "bendinh" : location.hash.slice(1); if (TOURS.some(t=>t.id===h)) openTour(h);
+const h = location.hash.slice(1); if (TOURS.some(t=>t.id===h)) openTour(h);
 </script>
 </body>
 </html>
