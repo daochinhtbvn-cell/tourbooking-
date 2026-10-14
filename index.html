@@ -379,7 +379,7 @@ const list = o => o[3] || r10k(o[1]/(1-OFF)), pair = o => o[4] || r10k(list(o)*(
 const childP = (t,o) => o[2] || (t.kids ? r10k(o[1]*.75) : o[1]);
 const cheap = t => t.options.reduce((a,o)=>o[1]<a[1]?o:a);
 const priceHTML = t => t.promo
-  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${fmt(list(cheap(t)))}</span><b>${fmt(cheap(t)[1])}</b>${t.nocouple?`<div class="couple">🔥 Book now · Hot deal 10% off</div>`:`<div class="couple">💑 Couple: ${fmt(pair(cheap(t)))}/person (-20%)</div>`}</div>`
+  ? `<div class="price"><small>${t.nocouple?"":"per person "}<span class="off">-10%</span></small><span class="was">${fmt(list(cheap(t)))}</span><b>${fmt(cheap(t)[1])}</b>${t.nocouple?`<div class="couple">🔥 Book now · Hot deal 10% off</div>`:`<div class="couple">💑 Couple: ${fmt(pair(cheap(t)))}/person (-20%)</div>`}</div>`
   : `<div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div>`;
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
