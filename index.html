@@ -386,6 +386,8 @@ const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult pric
 const KIDS_B = ["Under 3 years old: free", "9 years old and under: 75% of adult price", "10 years and above: adult price"];
 const KIDS_C = ["1 – 3 years old: free", "4 – 9 years old: 75% of adult price", "10 years and above: adult price"];
 const NOTE_STD = ["Tour order may change depending on the actual situation, but all attractions are covered.", "Tell us about food allergies in advance so we can arrange suitable dishes.", "If anything comes up during the tour, call us right away."];
+const KIDS_MULTI = ["4 years old and under: free (sits on a parent’s lap, shares parents’ bed and meals; 1 free child per 2 adults)","5 – 9 years old: 75% of adult price, own seat and meals","10 years and above: adult price"];
+const NOTE_MULTI = ["Shared group tour: you may travel together with Vietnamese guests, and your guide speaks English.","Bring your passport for hotel check-in.","Tour order may change depending on weather and traffic, but all attractions are covered."];
 
 const TOURS = [
 { id:"cuchimekong", cat:"history", name:"Cu Chi Tunnels & Mekong Delta", tag:"Best seller", hot:true, time:"7:30 AM – 7:30 PM", dur:"Full day", imgs:7,
@@ -494,6 +496,48 @@ const TOURS = [
   inc:["Hotel pick-up and drop-off (District 1)","English-speaking guide","All entrance fees","Bottle of water (500 ml)","Cycling and cooking class","Lunch"],
   exc:["Personal expenses","VAT"], kids:KIDS_B, notes:NOTE_STD },
 
+{ id:"mekong2d", cat:"nature", name:"Mekong 2 Days 1 Night – Can Tho & Cai Rang Floating Market", tag:"Floating market", time:"Daily departure", dur:"2 days 1 night", imgs:15,
+  sub:"My Tho · Ben Tre · Can Tho · dinner cruise",
+  departs:[["Daily","Meet 7:00 AM in District 1 · back in Saigon about 5:30 PM on day 2"]],
+  days_:true,
+  steps:[
+   ["Day 1 · Saigon – My Tho – Ben Tre – Can Tho","Lunch, dinner\nDrive to My Tho on the expressway and visit Vinh Trang Pagoda. Cruise the Tien River past the Dragon, Unicorn, Turtle and Phoenix islets and the fish farms.\nOn Thoi Son island: walk the village, a fruit garden, honey tea at a bee farm, southern folk music and a sampan ride through small canals.\nIn Ben Tre: coconut candy and rice paper workshops, a horse-cart ride, lunch at an eco-resort with free games (monkey bridge, rowing, cycling).\nAfternoon drive to Can Tho and hotel check-in. 6:30 PM dinner cruise at Ninh Kieu wharf with Mekong food and live music."],
+   ["Day 2 · Cai Rang Floating Market – My Khanh – Saigon","Breakfast, lunch\n5:30 AM boat trip to Cai Rang, one of the largest floating markets in the Delta, then a traditional rice-noodle workshop. Back to the hotel for buffet breakfast and check-out.\nVisit the Golden House (ticket not included), My Khanh tourist village (fruit gardens, a 100-year-old house, animal shows) and Truc Lam Phuong Nam Zen monastery. Lunch at My Khanh.\n1:30 PM stop at the Purple House café, then drive back to Saigon, arriving about 5:30 PM."]],
+  options:[["3★ hotel (Holiday 2 Can Tho or similar)",2390000,1790000],["4★ hotel (Holiday One or similar) + breakfast at Mekong Restop + Purple House ticket",2910000,2180000],["5★ hotel (Muong Thanh Luxury) + breakfast at Mekong Restop + Purple House ticket",3560000,2680000]],
+  single:[300000,null,null],
+  inc:["Modern air-conditioned coach","Hotel in central Can Tho, twin or double room","2 lunches, 1 dinner cruise, 1 buffet breakfast","Boat, sampan and floating market boat","Entrance to My Khanh tourist village","English-speaking guide throughout","Life jackets, water, cold towels, fruit","Gifts: checkered scarf, travel hat, coconut","Travel insurance"],
+  exc:["Single room supplement (1 person per room): 300,000 VND on the 3★ package; 4★ and 5★ quoted on request","Golden House ticket; Purple House ticket on the 3★ package","VAT invoice (8%) if requested","Personal expenses, tips"],
+  kids:KIDS_MULTI, notes:NOTE_MULTI },
+
+{ id:"mekong3d", cat:"nature", name:"Mekong 3 Days 2 Nights – Chau Doc, Tra Su Forest & Can Tho", tag:"Most complete", time:"Departs Mon, Thu, Sat", dur:"3 days 2 nights", imgs:15,
+  sub:"My Tho · Ben Tre · Chau Doc · Tra Su · Can Tho",
+  departs:[["Mon · Thu · Sat","Meet 6:30 AM in District 1 · back in Saigon about 5:30 PM on day 3"]],
+  days_:true,
+  steps:[
+   ["Day 1 · Saigon – My Tho – Ben Tre – Chau Doc","Breakfast, lunch, dinner\nBreakfast at Mekong Restop, then Vinh Trang Pagoda. Boat on the Tien River past the four islets and the floating fish farms.\nOn Thoi Son island: village walk, fruit garden, honey tea at a bee farm, free fruit with southern folk music and a sampan ride under the water-coconut palms.\nIn Ben Tre: coconut candy and rice paper workshops and a horse-cart ride, lunch at an eco-resort.\n1:30 PM drive to Chau Doc and check in. Dinner at a local restaurant, free evening."],
+   ["Day 2 · Chau Doc – Tra Su Forest – Can Tho","Breakfast, lunch, dinner\nSam Mountain: Ba Chua Xu temple, Thoai Ngoc Hau tomb and Tay An pagoda. Drive along the Vinh Te canal past the Seven Mountains and Khmer pagodas.\nTra Su cajuput forest: motorboat through the forest, then a rowing boat over carpets of green duckweed, birds everywhere. Climb the lookout tower. Lunch in the forest.\nAfternoon drive to Can Tho, check in, dinner cruise on the Hau River with live folk music."],
+   ["Day 3 · Cai Rang Floating Market – My Khanh – Saigon","Breakfast, lunch\n5:30 AM boat to Cai Rang floating market and a rice-noodle workshop. Buffet breakfast and check-out.\nGolden House (ticket not included), My Khanh tourist village and Truc Lam Phuong Nam Zen monastery. Lunch at My Khanh.\n1:30 PM Purple House café, then back to Saigon about 5:30 PM."]],
+  options:[["3★ hotels (Holiday 2 or similar), twin or double room",4340000,3250000]],
+  single:[600000],
+  inc:["Modern air-conditioned coach","2 nights in 3★ central hotels","3 lunches, 2 dinners (1 dinner cruise), 2 breakfasts","Boats, sampan, Tra Su boats and entrance fees","My Khanh village & Purple House tickets","English-speaking guide throughout","2 bottles of water per day, travel hat","Travel insurance"],
+  exc:["Single room supplement (1 person per room): 600,000 VND","Golden House ticket","Meals and drinks not listed","Personal expenses, tips"],
+  kids:KIDS_MULTI, notes:NOTE_MULTI },
+
+{ id:"mekong4d", cat:"nature", name:"Mekong 4 Days 3 Nights – Chau Doc, Ha Tien & Can Tho", tag:"Coast & Delta", time:"Departs every Wednesday", dur:"4 days 3 nights", imgs:10,
+  sub:"Dong Thap · Chau Doc · Ha Tien · Rach Gia · Can Tho",
+  departs:[["Every Wednesday","Meet 6:30 AM in District 1 · back in Saigon about 5:30 PM on day 4"]],
+  days_:true,
+  steps:[
+   ["Day 1 · Saigon – Dong Thap – Chau Doc","Breakfast, lunch, dinner\nMy Tho noodle soup breakfast at Mekong Restop. In Dong Thap: the Lotus Leaf Pagoda and the Huynh Thuy Le ancient house (from the novel “The Lover”). Lunch in Dong Thap.\nAfternoon at Tra Su cajuput forest: motorboat through the forest at sunset and the 23 m lookout tower.\nEvening: Tay An pagoda, Thoai Ngoc Hau tomb and Ba Chua Xu temple, then the Sam Mountain night market."],
+   ["Day 2 · Chau Doc – Ha Tien","Breakfast, lunch, dinner\nTinh Bien market, the Seven Mountains and Cam Mountain, palm-sugar juice in Chau Lang. Along the Vinh Te canal to Ha Tien and check in.\nAfternoon: Mui Nai beach and coffee on the hill, slide up to Ta Pang peak, Mac Cuu tomb, Thach Dong cave and Phu Dung pagoda. Free evening at the Ha Tien night market."],
+   ["Day 3 · Hon Chong – Rach Gia – Can Tho","Breakfast, lunch, dinner\nHon Chong: Hang Pagoda and the Father & Son rocks (Hon Phu Tu). Through the seaside city of Rach Gia.\n3:30 PM drive to Can Tho and check in. Dinner cruise at Ninh Kieu wharf with Mekong food and folk music."],
+   ["Day 4 · Cai Rang Floating Market – My Khanh – Saigon","Breakfast, lunch\nBoat on the Can Tho River: fish port, Quang Trung bridge, Cai Rang floating market and a rice-noodle workshop.\nMy Khanh tourist village and Truc Lam Phuong Nam Zen monastery. Lunch at My Khanh.\n1:30 PM Purple House café, back to Saigon about 5:30 PM."]],
+  options:[["3★ central hotels, twin or double room",6030000,4520000]],
+  single:[900000],
+  inc:["Modern air-conditioned coach, boats and sampans","3 nights in 3★ central hotels","4 breakfasts, 4 lunches, 3 dinners (1 dinner cruise)","Entrance fees as listed","Life jackets","English-speaking guide throughout","Gifts: checkered scarf, travel hat, cold towels","Travel insurance"],
+  exc:["Single room supplement (1 person per room): 900,000 VND","Purple House ticket","VAT invoice (8%) if requested","Tips for guide and driver (optional)"],
+  kids:KIDS_MULTI, notes:NOTE_MULTI },
+
 { id:"hcmc", cat:"city", name:"Ho Chi Minh City Tour", tag:"City", time:"8:00 AM – 5:00 PM", dur:"Full day", imgs:7,
   sub:"Palace, cathedral, markets & Chinatown",
   steps:[
@@ -576,7 +620,7 @@ const TOURS = [
 ];
 const imgsOf = t => Array.from({length:t.imgs},(_, i)=>`img/${t.id}-${i+1}.jpg`);
 TOURS.forEach(t => t.promo = true);
-const HOT_DEAL_ONLY = ["cuchimekong","cycling","hcmc","cruise","vungtau","muine","tayninh","monkey"];
+const HOT_DEAL_ONLY = ["cuchimekong","mekong2d","mekong3d","mekong4d","cycling","hcmc","cruise","vungtau","muine","tayninh","monkey"];
 TOURS.forEach(t => t.nocouple = HOT_DEAL_ONLY.includes(t.id));
 const minPrice = t => Math.min(...t.options.map(o=>o[1]));
 
@@ -634,12 +678,14 @@ function openTour(id){
   const li = (a,c) => `<ul class="list ${c}">${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
   document.getElementById("mBody").innerHTML = `
     <h2 id="mTitle">${t.name}</h2>
-    <div class="meta"><span>🕒 ${t.time}</span><span>🗣️ English-speaking guide</span><span>🚐 Hotel pick-up</span></div>
+    <div class="meta"><span>🕒 ${t.time}</span><span>🗣️ English-speaking guide</span>${t.days_?`<span>🏨 Hotel included</span><span>🍽️ Meals included</span><span>📍 Start in District 1</span>`:`<span>🚐 Hotel pick-up</span>`}</div>
     ${t.departs?`<h4>Departures</h4><div class="opts">${t.departs.map(d=>`<div class="opt"><span>${d[1]}</span><b>${d[0]}</b></div>`).join("")}</div>`:""}
     <h4>Tour program</h4>
-    <ul class="steps">${t.steps.map(s=>`<li><b>${s[0]}</b><p>${s[1]}</p></li>`).join("")}</ul>
+    <ul class="steps">${t.steps.map(s=>{ if(!t.days_) return `<li><b>${s[0]}</b><p>${s[1]}</p></li>`;
+      const [meals,...rest] = s[1].split("\n"); return `<li><b>${s[0]}</b><small style="color:var(--accent);font-weight:600">🍽️ ${meals}</small><p style="white-space:pre-line">${rest.join("\n\n")}</p></li>`; }).join("")}</ul>
     <h4>Price per person</h4>
-    ${t.promo ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>${t.nocouple?"🔥 Book now · Hot deal 10% off":"Now 10% off"}</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(o[1])}</b></div>${t.nocouple?"":`<div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(pair(o))}</b></div>`}<div class="opt"><span>Child</span><b>${fmt(childP(t,o))}</b></div></div>`).join("")
+    ${t.promo ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>${t.nocouple?"🔥 Book now · Hot deal 10% off":"Now 10% off"}</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(o[1])}</b></div>${t.nocouple?"":`<div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(pair(o))}</b></div>`}<div class="opt"><span>Child</span><b>${fmt(childP(t,o))}</b></div>${t.single?`<div class="opt"><span>🛏️ Single room supplement<br><small>if you stay alone in a room</small></span><b>${t.single[t.options.indexOf(o)]?"+"+fmt(t.single[t.options.indexOf(o)]):"on request"}</b></div>`:""}</div>`).join("")
+      + (t.single?`<p class="hint">Prices are per person sharing a twin or double room. Traveling alone, or an odd number of adults? One person pays the single room supplement (a triple room may be possible, ask us).</p>`:"")
       : `<div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>`}
     <div class="two">
       <div><h4>Included</h4>${li(t.inc,"yes")}</div>
@@ -655,9 +701,10 @@ function openTour(id){
         ${t.departs?`<label class="full">Departure<select id="bDep">${t.departs.map((d,k)=>`<option value="${k}">${d[0]} – ${d[1]}</option>`).join("")}</select></label>`:""}
         <label>Date<input type="date" id="bDate"></label>
         <label>Adults<input type="number" id="bAd" min="1" value="2"></label>
-        <label>Children (${t.departs?"4–11":"3–9"})<input type="number" id="bCh" min="0" value="0"></label>
+        <label>Children (${t.days_?"5–9":t.departs?"4–11":"3–9"})<input type="number" id="bCh" min="0" value="0"></label>
+        ${t.single?`<label>Single rooms<input type="number" id="bSgl" min="0" value="0" oninput="this.dataset.touched=1"></label>`:""}
         <label>Your name<input type="text" id="bName" placeholder="Name"></label>
-        <label class="full">Hotel (for pick-up)<input type="text" id="bHotel" placeholder="Hotel name / address"></label>
+        <label class="full">${t.days_?"Your hotel in Saigon (optional)":"Hotel (for pick-up)"}<input type="text" id="bHotel" placeholder="Hotel name / address"></label>
       </div>
       <div class="est">Estimated total: <b id="bTot"></b></div>
       <div class="bbtns">
@@ -681,11 +728,15 @@ function updateBook(){
   const k = +v("bOpt") || 0, o = t.options[k];
   const ad = Math.max(1, +v("bAd") || 1), ch = Math.max(0, +v("bCh") || 0);
   const kidRate = t.kids ? .75 : 1;
-  let tot;
+  let tot, sg = 0, sP = null;
   if (t.promo) {
     const adP = ad>=2 && !t.nocouple ? pair(o) : o[1];
-    tot = fmt(adP*ad + childP(t,o)*ch);
-    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${fmt((list(o)-adP)*ad)}${ad>=2&&!t.nocouple?" · couple price":""}</span>`;
+    const sEl = document.getElementById("bSgl");
+    if (sEl && !sEl.dataset.touched) sEl.value = ad % 2;
+    sg = sEl ? Math.max(0, +sEl.value || 0) : 0; sP = t.single ? t.single[k] : null;
+    tot = fmt(adP*ad + childP(t,o)*ch + (sP ? sP*sg : 0));
+    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${fmt((list(o)-adP)*ad)}${ad>=2&&!t.nocouple?" · couple price":""}</span>`
+      + (sg ? `<br><small>${sP ? `incl. ${sg} single room${sg>1?"s":""} × ${fmt(sP)}` : `+ single room supplement for ${sg} room${sg>1?"s":""}, quoted on request`}</small>` : "");
   } else {
     tot = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
     document.getElementById("bTot").textContent = tot;
@@ -693,7 +744,7 @@ function updateBook(){
   const dep = t.departs ? t.departs[+v("bDep") || 0] : null;
   const msg = [`Hello Vietnam Memory Travel! I'd like to book:`,
     `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"", dep?`Departure: ${dep[0]} (${dep[1]})`:"",
-    `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
+    `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"", sg?`Single rooms: ${sg}${sP?"":" (supplement on request)"}`:"",
     `Estimated total: ${tot}${t.promo?(ad>=2&&!t.nocouple?" (couple price -20%)":t.nocouple?" (hot deal -10%)":" (-10%)"):""}`,
     v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
   bookingMsg = msg;
