@@ -379,7 +379,7 @@ const list = o => o[3] || r10k(o[1]/(1-OFF)), pair = o => o[4] || r10k(list(o)*(
 const childP = (t,o) => o[2] || (t.kids ? r10k(o[1]*.75) : o[1]);
 const cheap = t => t.options.reduce((a,o)=>o[1]<a[1]?o:a);
 const priceHTML = t => t.promo
-  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${fmt(list(cheap(t)))}</span><b>${fmt(cheap(t)[1])}</b><div class="couple">💑 Couple: ${fmt(pair(cheap(t)))}/person (-20%)</div></div>`
+  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${fmt(list(cheap(t)))}</span><b>${fmt(cheap(t)[1])}</b>${t.nocouple?`<div class="couple">🔥 Book now · Hot deal 10% off</div>`:`<div class="couple">💑 Couple: ${fmt(pair(cheap(t)))}/person (-20%)</div>`}</div>`
   : `<div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div>`;
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
@@ -576,6 +576,8 @@ const TOURS = [
 ];
 const imgsOf = t => Array.from({length:t.imgs},(_, i)=>`img/${t.id}-${i+1}.jpg`);
 TOURS.forEach(t => t.promo = true);
+const HOT_DEAL_ONLY = ["cuchimekong","cycling","hcmc","cruise","vungtau","muine","tayninh","monkey"];
+TOURS.forEach(t => t.nocouple = HOT_DEAL_ONLY.includes(t.id));
 const minPrice = t => Math.min(...t.options.map(o=>o[1]));
 
 /* filters + grid */
@@ -637,7 +639,7 @@ function openTour(id){
     <h4>Tour program</h4>
     <ul class="steps">${t.steps.map(s=>`<li><b>${s[0]}</b><p>${s[1]}</p></li>`).join("")}</ul>
     <h4>Price per person</h4>
-    ${t.promo ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>Now 10% off</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(o[1])}</b></div><div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(pair(o))}</b></div><div class="opt"><span>Child</span><b>${fmt(childP(t,o))}</b></div></div>`).join("")
+    ${t.promo ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>${t.nocouple?"🔥 Book now · Hot deal 10% off":"Now 10% off"}</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(o[1])}</b></div>${t.nocouple?"":`<div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${fmt(list(o))}</span>${fmt(pair(o))}</b></div>`}<div class="opt"><span>Child</span><b>${fmt(childP(t,o))}</b></div></div>`).join("")
       : `<div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>`}
     <div class="two">
       <div><h4>Included</h4>${li(t.inc,"yes")}</div>
@@ -681,9 +683,9 @@ function updateBook(){
   const kidRate = t.kids ? .75 : 1;
   let tot;
   if (t.promo) {
-    const adP = ad>=2 ? pair(o) : o[1];
+    const adP = ad>=2 && !t.nocouple ? pair(o) : o[1];
     tot = fmt(adP*ad + childP(t,o)*ch);
-    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${fmt((list(o)-adP)*ad)}${ad>=2?" · couple price":""}</span>`;
+    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${fmt((list(o)-adP)*ad)}${ad>=2&&!t.nocouple?" · couple price":""}</span>`;
   } else {
     tot = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
     document.getElementById("bTot").textContent = tot;
@@ -692,7 +694,7 @@ function updateBook(){
   const msg = [`Hello Vietnam Memory Travel! I'd like to book:`,
     `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"", dep?`Departure: ${dep[0]} (${dep[1]})`:"",
     `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
-    `Estimated total: ${tot}${t.promo?(ad>=2?" (couple price -20%)":" (-10%)"):""}`,
+    `Estimated total: ${tot}${t.promo?(ad>=2&&!t.nocouple?" (couple price -20%)":t.nocouple?" (hot deal -10%)":" (-10%)"):""}`,
     v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
   bookingMsg = msg;
 }
