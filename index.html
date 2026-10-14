@@ -198,6 +198,9 @@ body.locked .cta{display:none}
 .lb .x{background:rgba(255,255,255,.2)}
 .off{display:inline-block;background:#e53935;color:#fff;font-size:11px;font-weight:800;padding:1px 6px;border-radius:6px;margin-left:4px;vertical-align:middle;text-decoration:none}
 .couple{font-size:12.5px;color:#d81b60;font-weight:700;margin-top:4px}
+.card .foot:has(.couple){flex-direction:column;align-items:stretch;gap:8px}
+.card .foot:has(.couple) .more{align-self:flex-end}
+.card .foot:has(.couple) .was{display:block}
 .cmp .couple{font-size:12px}
 .opt small{color:var(--muted);font-weight:400}
 .save{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:#2e9e5b;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle}
@@ -367,13 +370,13 @@ body.locked .wa-float{display:none}
 const PHONE = "84789755448";           // hotline (call)
 const PHONE_TXT = "+84 789 755 448";
 const fmt = n => n.toLocaleString("en-US") + " VND";
-// Cu Chi tours are priced in USD like tunnelcuchi.com: our real price is shown as "10% off",
+// Cu Chi tours (promo:true, same as tunnelcuchi.com but in VND): our real price is shown as "10% off",
 // the crossed-out price is raised so -10% lands on it; couples (2+ adults) get 20% off that.
 const OFF = .10, COUPLE = .20;
-const usd = n => "$" + n;
-const list = b => Math.round(b/(1-OFF)), pair = b => Math.round(list(b)*(1-COUPLE));
-const priceHTML = t => t.usd
-  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${usd(list(t.options[0][1]))}</span><b>${usd(t.options[0][1])}</b><div class="couple">💑 Couple: ${usd(pair(t.options[0][1]))}/person (-20%)</div></div>`
+const r10k = n => Math.round(n/10000)*10000;
+const list = b => r10k(b/(1-OFF)), pair = b => r10k(list(b)*(1-COUPLE));
+const priceHTML = t => t.promo
+  ? `<div class="price"><small>per person <span class="off">-10%</span></small><span class="was">${fmt(list(t.options[0][1]))}</span><b>${fmt(t.options[0][1])}</b><div class="couple">💑 Couple: ${fmt(pair(t.options[0][1]))}/person (-20%)</div></div>`
   : `<div class="price"><small>${t.options.length>1?'from':'per person'}</small><b>${fmt(minPrice(t))}</b></div>`;
 
 const KIDS_A = ["Under 3 years old: free", "3 – 7 years old: 75% of adult price", "8 years and above: adult price"];
@@ -397,7 +400,7 @@ const TOURS = [
   inc:["Hotel pick-up and drop-off (District 1)","Lunch","All entrance fees","English-speaking guide","1 bottle of water (0.5 L) per person"],
   exc:["Personal expenses","Shooting range","VAT"], kids:KIDS_B, notes:NOTE_STD },
 
-{ id:"bendinh", cat:"history", usd:true, time:"Morning 8:00 AM · Afternoon 12:30 PM", name:"Cu Chi Tunnels – Ben Dinh", tag:"Best seller", hot:true, dur:"Half day",
+{ id:"bendinh", cat:"history", promo:true, time:"Morning 8:00 AM · Afternoon 12:30 PM", name:"Cu Chi Tunnels – Ben Dinh", tag:"Best seller", hot:true, dur:"Half day",
   sub:"Morning or afternoon · group tour by bus/van",
   imgs:10,
   departs:[["Morning","Pick-up 8:00 AM · back about 2:30 PM"],["Afternoon","Pick-up 12:30 PM · back about 7:00 PM"]],
@@ -408,13 +411,13 @@ const TOURS = [
    ["Smokeless kitchen","See how soldiers cooked on hidden “Hoang Cam” stoves and taste tapioca (cassava), their wartime food."],
    ["Shooting range (optional)","Fire an AK-47 or M16, paid on the spot."],
    ["Return","Drive back to Saigon and drop-off at your hotel."]],
-  options:[["Group tour, max 27 people · Air-con bus/van",20,13]],
+  options:[["Group tour, max 27 people · Air-con bus/van",520000,340000]],
   inc:["Air-conditioned bus or van","Pick-up and drop-off at hotels in District 1","English-speaking guide","Entrance fee","Tapioca","Mineral water"],
   exc:["Shooting range","Personal expenses","Tips (optional)"],
-  kids:["Under 4 years old: free","4 – 11 years old: $13","12 years and above: adult price"],
+  kids:["Under 4 years old: free","4 – 11 years old: 340,000 VND","12 years and above: adult price"],
   notes:["Wear comfortable shoes and bring insect repellent.","Crawling into the tunnels is optional."] },
 
-{ id:"benduoc", cat:"history", usd:true, time:"Morning 7:30 AM · Noon 12:00 PM", name:"Cu Chi Ben Duoc Tunnels – Luxury Minivan", tag:"Less touristy", dur:"Half day",
+{ id:"benduoc", cat:"history", promo:true, time:"Morning 7:30 AM · Noon 12:00 PM", name:"Cu Chi Ben Duoc Tunnels – Luxury Minivan", tag:"Less touristy", dur:"Half day",
   sub:"Authentic & quieter site · small group",
   imgs:10,
   departs:[["Morning","Pick-up 7:30 – 8:00 AM · back about 2:30 PM"],["Noon","Pick-up 12:00 – 12:30 PM · back about 7:00 PM"]],
@@ -426,13 +429,13 @@ const TOURS = [
    ["Wartime snack","Try cassava and tea, the food guerrillas lived on during the war."],
    ["Shooting range (optional)","Try an AK-47 or M16, extra fee."],
    ["Return","Drive back to Ho Chi Minh City and drop-off at your hotel."]],
-  options:[["Small group · Luxury minivan",24,18]],
+  options:[["Small group · Luxury minivan",620000,470000]],
   inc:["Brand-new luxury minivan with hotel pick-up","English-speaking guide","All entrance fees","Drinking water, a cake and cool tissues"],
   exc:["Shooting range","Personal expenses, travel insurance","Tips (optional)"],
-  kids:["Under 5 years old: free","5 – 11 years old: $18","12 years and above: adult price"],
+  kids:["Under 5 years old: free","5 – 11 years old: 470,000 VND","12 years and above: adult price"],
   notes:["Bring comfortable shoes, insect repellent, cash and your camera.","Crawling into the tunnels is optional."] },
 
-{ id:"speedboat", cat:"history", usd:true, time:"Morning 7:00 AM · Afternoon 11:00 AM", name:"Cu Chi Tunnels by Speedboat", tag:"Premium", dur:"Half day · 6 hours",
+{ id:"speedboat", cat:"history", promo:true, time:"Morning 7:00 AM · Afternoon 11:00 AM", name:"Cu Chi Tunnels by Speedboat", tag:"Premium", dur:"Half day · 6 hours",
   sub:"Saigon River cruise · breakfast & lunch included",
   imgs:10,
   departs:[["Morning","7:00 AM – 1:00 PM"],["Afternoon","11:00 AM – 5:00 PM (same program, later start)"]],
@@ -444,10 +447,10 @@ const TOURS = [
    ["11:00 · Riverside lunch","A traditional Vietnamese lunch by the river."],
    ["11:30 · Cruise back","Relax on the boat back to the city."],
    ["13:00 · Back at Bach Dang pier","Drop-off at your hotel."]],
-  options:[["Speedboat · max 15 guests",95,69]],
+  options:[["Speedboat · max 15 guests",2470000,1790000]],
   inc:["Speedboat on the Saigon River","Light breakfast and lunch","Unlimited refreshments and local fruit","English-speaking guide","All entrance fees","Hotel pick-up and drop-off (central hotels)","Travel insurance","Government tax and service charge"],
   exc:["Extra food and drinks","Shooting range (about 75,000 VND per bullet)","Tips (optional)"],
-  kids:["0 – 3 years old: free","4 – 12 years old: $69","Child-sized life jackets provided"],
+  kids:["0 – 3 years old: free","4 – 12 years old: 1,790,000 VND","Child-sized life jackets provided"],
   notes:["Pick-up in central District 1 & 3. Other areas: meet at the Saigon Water Bus Station.","Passport number required by local authorities, send it when booking.","Light rain is fine: boats have rain covers, ponchos and umbrellas. Vegetarian meals on request."] },
 
 { id:"mekong", cat:"nature", name:"Mekong Delta 1 Day", tag:"Best seller", hot:true, time:"7:30 AM – 6:00 PM", dur:"Full day", imgs:7,
@@ -585,7 +588,7 @@ drawFilters();drawGrid();
 /* price table */
 document.getElementById("ptable").innerHTML = TOURS.map(t=>`
   <div class="prow"><div class="n">${t.name}<small>${t.dur} · ${t.time}</small></div>
-  <div class="v">${t.usd?`<span class="was">${usd(list(minPrice(t)))}</span>${usd(minPrice(t))} <span class="off">-10%</span>`:`${t.options.length>1?'from ':''}${fmt(minPrice(t))}`}</div>
+  <div class="v">${t.promo?`<span class="was">${fmt(list(minPrice(t)))}</span>${fmt(minPrice(t))} <span class="off">-10%</span>`:`${t.options.length>1?'from ':''}${fmt(minPrice(t))}`}</div>
   <button data-id="${t.id}">View</button></div>`).join("");
 document.getElementById("ptable").addEventListener("click",e=>{const b=e.target.closest("button");if(b)openTour(b.dataset.id);});
 
@@ -618,7 +621,7 @@ function openTour(id){
     <h4>Tour program</h4>
     <ul class="steps">${t.steps.map(s=>`<li><b>${s[0]}</b><p>${s[1]}</p></li>`).join("")}</ul>
     <h4>Price per person</h4>
-    ${t.usd ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>Now 10% off</small></span><b><span class="was">${usd(list(o[1]))}</span>${usd(o[1])}</b></div><div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${usd(list(o[1]))}</span>${usd(pair(o[1]))}</b></div><div class="opt"><span>Child</span><b>${usd(o[2])}</b></div></div>`).join("")
+    ${t.promo ? t.options.map(o=>`<div class="opts"><div class="opt"><span>${o[0]}<br><small>Now 10% off</small></span><b><span class="was">${fmt(list(o[1]))}</span>${fmt(o[1])}</b></div><div class="opt"><span>💑 Couple / 2 adults or more<br><small>20% off per person</small></span><b><span class="was">${fmt(list(o[1]))}</span>${fmt(pair(o[1]))}</b></div><div class="opt"><span>Child</span><b>${fmt(o[2])}</b></div></div>`).join("")
       : `<div class="opts">${t.options.map(o=>`<div class="opt"><span>${o[0]}</span><b>${fmt(o[1])}</b></div>`).join("")}</div>`}
     <div class="two">
       <div><h4>Included</h4>${li(t.inc,"yes")}</div>
@@ -634,7 +637,7 @@ function openTour(id){
         ${t.departs?`<label class="full">Departure<select id="bDep">${t.departs.map((d,k)=>`<option value="${k}">${d[0]} – ${d[1]}</option>`).join("")}</select></label>`:""}
         <label>Date<input type="date" id="bDate"></label>
         <label>Adults<input type="number" id="bAd" min="1" value="2"></label>
-        <label>Children (${t.usd?"4–11":"3–9"})<input type="number" id="bCh" min="0" value="0"></label>
+        <label>Children (${t.promo?"4–11":"3–9"})<input type="number" id="bCh" min="0" value="0"></label>
         <label>Your name<input type="text" id="bName" placeholder="Name"></label>
         <label class="full">Hotel (for pick-up)<input type="text" id="bHotel" placeholder="Hotel name / address"></label>
       </div>
@@ -661,10 +664,10 @@ function updateBook(){
   const ad = Math.max(1, +v("bAd") || 1), ch = Math.max(0, +v("bCh") || 0);
   const kidRate = t.kids ? .75 : 1;
   let tot;
-  if (t.usd) {
+  if (t.promo) {
     const adP = ad>=2 ? pair(o[1]) : o[1];
-    tot = usd(adP*ad + o[2]*ch);
-    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${usd((list(o[1])-adP)*ad)}${ad>=2?" · couple price":""}</span>`;
+    tot = fmt(adP*ad + o[2]*ch);
+    document.getElementById("bTot").innerHTML = `${tot} <span class="save">You save ${fmt((list(o[1])-adP)*ad)}${ad>=2?" · couple price":""}</span>`;
   } else {
     tot = fmt(Math.round(o[1]*ad + o[1]*kidRate*ch));
     document.getElementById("bTot").textContent = tot;
@@ -673,7 +676,7 @@ function updateBook(){
   const msg = [`Hello Vietnam Memory Travel! I'd like to book:`,
     `Tour: ${t.name}`, t.options.length>1?`Option: ${o[0]}`:"", dep?`Departure: ${dep[0]} (${dep[1]})`:"",
     `Date: ${v("bDate")}`, `Adults: ${ad}`, ch?`Children: ${ch}`:"",
-    `Estimated total: ${tot}${t.usd?(ad>=2?" (couple price -20%)":" (-10%)"):""}`,
+    `Estimated total: ${tot}${t.promo?(ad>=2?" (couple price -20%)":" (-10%)"):""}`,
     v("bName")?`Name: ${v("bName")}`:"", v("bHotel")?`Hotel: ${v("bHotel")}`:""].filter(Boolean).join("\n");
   bookingMsg = msg;
 }
